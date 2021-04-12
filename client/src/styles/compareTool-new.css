@@ -83,8 +83,11 @@
 }
 
 .mainField-title {
-    font-size: 1rem;
+    font-family: DM Sans;
+    font-size: 18px;
+    font-style: normal;
     font-weight: 700;
+    line-height: 34px;
     color: #3D3E3F;    
 }
 
@@ -99,8 +102,10 @@
 }
 
 .subField-title {
-    font-size: 1rem;
+    font-size: 18px;
     font-weight: 500;
+    line-height: 34px;
+
     color: #3D3E3F;
     padding-left: 1rem;
 }
@@ -116,8 +121,12 @@
 }
 
 .nestedField-title {
-    font-size: 1rem;
+    font-family: DM Sans;
+    font-size: 18px;
+    font-style: normal;
     font-weight: 400;
+    line-height: 34px;
+
     color: #000;
     padding-left: 2.5rem;
 }
@@ -295,6 +304,7 @@
         grid-template-columns: 10rem repeat( 3, 10rem ) 3rem;
         /* grid-template-rows: 5rem; */
     }
+    
 
 }
 
@@ -399,6 +409,20 @@
         /* grid-template-rows: 5rem; */
     }
 
+    .mainField-title {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .subField-title {
+        font-size: 15px;
+        line-height: 20px;
+    }
+    .nestedField-title {
+        font-size: 15px;
+        line-height: 22px;
+    }
+
 }
 
 @media screen and (max-width:700px) {
@@ -449,6 +473,19 @@
     .nestedField-container {
         grid-template-columns: 8rem repeat( 2, 6rem ) 2rem;
         grid-template-rows: 11rem;
+    }
+
+    .mainField-title {
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .subField-title {
+        font-size: 13px;
+        line-height: 17px;
+    }
+    .nestedField-title {
+        font-size: 12px;
+        line-height: 17px;
     }
 
 }

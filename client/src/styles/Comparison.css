@@ -3,10 +3,12 @@
     border-width: 1px;
     border-color: #BDBDBD;
     border-radius: 13px;
-    margin-right: 3%;
-    padding: 2.5%;
+    margin-right: 5px;
+    padding: 3px 9px;
     transition: 0.2s;
     color: #3D3E3F;
+    max-width: max-content;
+    margin-bottom: 10px;
 }
 
 #filterbutton, #filterbutton1, #filterbutton2, #filterbutton3 span:hover {
@@ -24,16 +26,18 @@ hr {
 }
 
 #brands {
-    margin-bottom: '8%';
+    margin-bottom: 20px;
     font-family: 'DM Sans';
-    font-weight: 550;
+    font-weight: 500;
     font-size: 24px;
+    line-height: 38px;
     color: #26385A;
 }
 
 #apparel {
-    font-weight: 450;
     font-size: 30px;
+    font-weight: 700;
+    line-height: 38px;
     color: #26385A;
 }
 
@@ -47,34 +51,57 @@ input {
     margin-top: 4%;
 }
 
-#colors {
-    font-size: 14px;
-    margin-top: 3%;
+.text-1 {
+    font-size: 16px;
+    color: #3D3E3F;
+    margin-bottom: 8px;
+}
+
+.avg-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.avg-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 #abvavg {
     background-color: #93CE8F;
     padding-left: 17px;
-    /* margin-left: 32%; */
+    height: 17px;
+    margin-left: 5%;
     /* margin-bottom: 1%; */
 }
 
 #avg {
     background-color: #FFEB84;
     padding-left: 17px;
+    height: 17px;
     margin-left: 5%;
 }
 
 #blwavg {
     background-color: #FBB178;
     padding-left: 17px;
+    height: 17px;
     margin-left: 5%;
     /* margin-bottom: 1%; */
 }
 
+#NAavg {
+    background-color: #BDBDBD;
+    padding-left: 17px;
+    height: 17px;
+    margin-left: 5%;
+}
+
 .avgtext {
-    margin-left: 1%;
-    font-size: 12px;
+    margin: 0 15px 0 5px;
+    font-size: 13px;
 }
 
 .apparelsearch input {
@@ -99,7 +126,9 @@ input {
     transition: 2s;
     font-size: 18px;
     font-weight: 500;
-    margin-top: 4%;
+    /* margin-top: 4%; */
+    line-height: 34px;
+    color: #26385A;
 }
 
 .square {
@@ -374,6 +403,12 @@ x
     margin-left: 6%;
 }
 
+.row-1 {
+    height: min-content;
+    position: sticky;
+    top: 0;
+}
+
 .row-2 {
     display: flex;
     flex-direction: column;
@@ -387,6 +422,8 @@ x
 .apparel-container {
     display: flex;
     flex-direction: column;
+    margin-left: 13%;
+    white-space: nowrap;
 }
 
 .mobile-search-box {
@@ -437,6 +474,43 @@ x
     padding: 0.5rem 2px 0.5rem 27px;
 }
 
+.compare-search-category-container {
+    margin-top: 27px;
+    display: flex;
+    flex-direction: row;
+}
+
+.compare-search-category {
+    position: relative;
+    display: flex;
+    margin-right: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+    border-radius: 13px;
+    border: 1px solid #9A9B9C;
+    min-width: max-content;
+    padding: 3px 0 3px 9px;
+}
+
+.compare-search-category-inactive {
+    color: #9A9B9C;
+}
+
+.compare-search-category-menu {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat( 4, max-content);
+    grid-gap: 10px 15px;
+    grid-auto-flow: dense;
+    padding: 15px;
+    background-color: #f2f2f2;
+    top: 37px;
+    left: 0;
+    border-radius: 8px;
+    z-index: 10;
+}
+
 @media screen and (max-width:900px) {
 
     .row-1 {
@@ -448,7 +522,42 @@ x
     }
 
     .apparel-container {
-        margin-bottom: 2rem;
+        margin: 0 0 2rem 0;
+    }
+    #apparel {
+        font-size: 25px;
     }
 
+}
+
+@media screen and (max-width:700px) {
+
+    .compare-search-category-container {
+        flex-wrap: wrap;
+    }
+
+    .compare-search-category {
+        margin-bottom: 12px;
+    }
+
+}
+
+@media screen and (max-width:600px) {
+    #apparel {
+        font-size: 24px;
+    }
+
+    .text-1:last-of-type {
+        display: none;
+    }
+    .avg-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 15px;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .apparel-container {
+        white-space: normal;
+    }
 }
