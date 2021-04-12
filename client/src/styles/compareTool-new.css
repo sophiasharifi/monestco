@@ -252,6 +252,12 @@
     display: none;
 }
 
+@media screen and (max-width:1600px) {
+    .mainField-title {
+        font-size: 16px;
+    }
+}
+
 @media screen and (max-width:1350px) {
 
     .compare-input-container {
@@ -276,6 +282,9 @@
         grid-template-columns: 11rem repeat( 3, 12rem ) 3rem;
     }
 
+    .nestedField-title {
+        font-size: 16px;
+    }
 }
 
 @media screen and (max-width:1250px) {
