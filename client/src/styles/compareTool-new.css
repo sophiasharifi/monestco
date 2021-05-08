@@ -232,7 +232,7 @@
 .brand-name {
     padding: 5px 9px;
     border: 1px solid #333333;
-    font-size: 1rem;
+    font-size: 14px;
     font-weight: 700;
     border-radius: 13px;
     margin-left: 10px;
@@ -246,7 +246,7 @@
 }
 
 .brand-button-close {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     color: #797979;
 }
 
@@ -603,6 +603,7 @@
 
     .brand-name{
         margin-left: 5px;
+        font-size: 12px;
     }
 
     .mainField-container {
@@ -692,6 +693,14 @@
         justify-content: center;
     }
 
+    .brand-button-container>.brand-button-close {
+        font-size: 14px;
+    }
+
+    .brand-name{
+        font-size: 12px;
+    }
+
 }
 
 @media screen and (max-width:500px) {
@@ -727,4 +736,7 @@
         padding-left: 0;
     }
 
+    .brand-name {
+        padding: 5px 3px;
+    }
 }
