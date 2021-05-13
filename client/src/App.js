@@ -12,6 +12,16 @@ import BrandBreakdown from './pages/BrandBreakdown-new';
 import BrandDirectory from './pages/BrandDirectory';
 import Company from './components/Companies/Company';
 import HomePage from './components/Home/HomePage';
+import ReactGA from 'react-ga';
+
+function initializeReactGA() {
+  ReactGA.initialize('G-P4PGY86R0X');
+  ReactGA.pageview('/');
+  ReactGA.pageview('/companies/:companyName');
+  ReactGA.pageview('/comparison');
+  ReactGA.pageview('/brand-breakdown/:companyName');
+  ReactGA.pageview('/brand-directory');
+}
 
 function App() {
   return (
