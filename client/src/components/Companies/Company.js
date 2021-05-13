@@ -232,7 +232,7 @@ function rand() {
           issueAdd={news[0]["IssueAddressed"]} issueAddExp={news[0]["IssueAddressedExplanation"]} respTake={news[0]["ResponsibilityTaken"]} respTakenExp = {news[0]["ResponsibilityTakenExplanation"]} newsID={news[0]["ID"]} citID={citations[0]["RelationalID"]} author={citations[0]["Author"]} cittitle={citations[0]["Title"]} pubgroup = {citations[0]["PublishingGroup"]} date = {citations[0]["Date"]} pages = {citations[0]["Pages"]} url = {citations[0]["URL"]} />
       );
 
-    const Popup = ({handleCloseInfo}) => {
+    const BrandPerformancePopup = ({handleCloseInfo}) => {
 
         return (
             <div className="company-popup">
@@ -240,7 +240,41 @@ function rand() {
                     <div style={{display:'flex', flexDirection:'column', marginTop:'1rem'}}>
                         <div>Brand Performance</div>
                         <div style={{fontSize:'16px', fontWeight:'500'}}>
-                            Mobile Vulputate sit condimentum nulla eget placerat tincidunt.
+                        Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown.
+                        </div>
+                    </div>
+                    <HighlightOffRoundedIcon onClick={handleCloseInfo} className="popup-close-icon"/>
+                </div>
+            </div>
+        )
+    };
+
+    const NewsPopup = ({handleCloseInfo}) => {
+
+        return (
+            <div className="company-popup">
+                <div className='company-popup-content'>
+                    <div style={{display:'flex', flexDirection:'column', marginTop:'1rem'}}>
+                        <div>In The News</div>
+                        <div style={{fontSize:'16px', fontWeight:'500'}}>
+                        News and recent events summarized with an assessment of the company’s actions taken in response. 
+                        </div>
+                    </div>
+                    <HighlightOffRoundedIcon onClick={handleCloseInfo} className="popup-close-icon"/>
+                </div>
+            </div>
+        )
+    };
+
+    const CompanyInitiativePopup = ({handleCloseInfo}) => {
+
+        return (
+            <div className="company-popup">
+                <div className='company-popup-content'>
+                    <div style={{display:'flex', flexDirection:'column', marginTop:'1rem'}}>
+                        <div>Company Initiatives</div>
+                        <div style={{fontSize:'16px', fontWeight:'500'}}>
+                        A showcase of brand initiatives and achievements that are not directly correlated to the scores given.
                         </div>
                     </div>
                     <HighlightOffRoundedIcon onClick={handleCloseInfo} className="popup-close-icon"/>
@@ -309,11 +343,11 @@ function rand() {
 
         if(!tabView) { //web view
             return(
-                <div className='brand_info-text'>Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown</div>
+                <div className='brand_info-text'>Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown.</div>
                 )
         } else if ( showInfo && tabView ) { //tab view
             return(
-                    <Popup handleCloseInfo={handleCloseInfo} />
+                    <BrandPerformancePopup handleCloseInfo={handleCloseInfo} />
                 )
         } else return null
 
@@ -338,11 +372,11 @@ function rand() {
 
         if(!tabView) { //web view
             return(
-                <div className='brand_info-text'>A showcase of brand initiatives and achievements that are not directly correlated to the scores given</div>
+                <div className='brand_info-text'>A showcase of brand initiatives and achievements that are not directly correlated to the scores given.</div>
                 )
         } else if ( showInfo && tabView ) { //tab view
             return(
-                    <Popup handleCloseInfo={handleCloseInfo} />
+                    <CompanyInitiativePopup handleCloseInfo={handleCloseInfo} />
                 )
         } else return null
 
@@ -367,11 +401,11 @@ function rand() {
 
         if(!tabView) { //web view
             return(
-                <div className='brand_info-text'>News and recent events summarized with an assessment of the company’s actions taken in response</div>
+                <div className='brand_info-text'>News and recent events summarized with an assessment of the company’s actions taken in response.</div>
                 )
         } else if ( showInfo && tabView ) { //tab view
             return(
-                    <Popup handleCloseInfo={handleCloseInfo} />
+                    <NewsPopup handleCloseInfo={handleCloseInfo} />
                 )
         } else return null
 
@@ -618,7 +652,7 @@ function rand() {
 
                     {/* <div className = 'News-Description-info'>{newsinput[0]["Summary"][i]}</div> */}
                     <div style={{fontSize:'14px'}}>
-                        <span>Responsibility Taken?</span>
+                        <span>Issue Resolved?</span>
 
                         {newsinput[0]["ResponsibilityTaken"][i] == "No" &&
                             <span style={{color:'#E94921', marginLeft:'5px'}}>{newsinput[0]["ResponsibilityTaken"][i]}</span>
@@ -633,7 +667,7 @@ function rand() {
 
                     </div>
                     <div style={{fontSize:'14px', display:'flex', position:'relative'}}>
-                        <span>Issue Addressed?</span>
+                        <span>Responsibility Taken?</span>
 
                         
                         {newsinput[0]["IssueAddressed"][i] == "No" &&
@@ -790,18 +824,11 @@ function rand() {
                                         <div class="verticalline2"></div> 
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>
                                         {/* <p style={{fontFamily: 'DM Sans', fontSize: '12px', color: '#4F4F4F'}} >underperforming<span style={{marginLeft: '145px'}}>overperforming</span></p> */}
-                                    <div className="d-fledx justify-content-center">
-                                    <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
-                                        <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div>
-                                        <div class="horizontalline2" style={{width: `${companyDetails[0]["comp1SliderLength"]}px` }}></div>
-                                        <div class="verticalline2"></div> 
-                                        <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="brand_logo"/>     
-                                    </div>
-                                    <div className="brand_inside_text ml-10perc">
+                                </div>
+                                <div className="brand_inside_text ml-10perc">
                                         <span>{Math.round(companyDetails[0]["company1TotalScore"], 2)}</span>
                                         <span>/100</span>
                                     </div>
-                                </div>
                             </div>
                             <div>
                                 <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany2"]}>{companyDetails[0]["SimilarCompany2"]}</Link> 

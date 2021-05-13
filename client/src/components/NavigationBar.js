@@ -1,7 +1,7 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import LogoTransparent from '../assets/logo_transparent.png'
+import LogoTransparent from '../assets/monestlogo.png'
 import ApparelDropdown from './Dropdown/ApparelDropdown.js'
 import TechDropdown from './Dropdown/TechDropdown.js'
 import FastFoodDropdown from './Dropdown/FastFoodDropdown.js'

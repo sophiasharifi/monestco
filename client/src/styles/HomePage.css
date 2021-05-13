@@ -337,8 +337,8 @@ body{
     font-family: DM Sans;
     font-style: normal;
     font-weight: bold;
-    font-size: 64px;
-    line-height: 76px;
+    font-size: 50px;
+    line-height: 62px;
 
     letter-spacing: 2px;
 
@@ -349,8 +349,8 @@ body{
 .Career-Positioning h2{
     /* or 106% */
     letter-spacing: 2px;
-    font-size: 64px;
-    line-height: 76px;
+    font-size: 50px;
+    line-height: 62px;
     margin-bottom: 60px;
     color: #ABD4B7
 }
@@ -811,6 +811,9 @@ body{
         line-height: 34px;
         margin-bottom: 50px;
     }      
+    .Mobile-Hamburger-Menu {
+        top: 20px;   
+    }
 
 }
 
@@ -828,6 +831,16 @@ body{
         width: max-content;
         margin-left: 2%;
     }
+    .window_header_text {
+    font-size: 28px;
+    }
+    .Goals>h1{
+        font-size: 28px;
+    }
+    .Goal-Panel>h1 {
+        font-size: 20px;
+    }
+
 }
 
 @media screen and (max-width: 420px) {
@@ -837,4 +850,35 @@ body{
         align-self: flex-start;
         margin: 35px 0 0 7%;
     }
+}
+
+@media screen and (max-width: 380px) {
+    .About-Us-Positioning {
+        margin: 35px 0 0 5%;
+    }
+    .main_image-container {
+        margin-left: 0;
+    }
+    .sign_up-form-container {
+        padding-top: 25px;
+        padding-bottom: 70px;
+    }
+    .Sign-Up-Positioning {
+        margin-left: 0;
+    }
+    .Video {
+        height: 400px;
+    }
+    .career-btn-container {
+        margin-left: 0;
+    }
+    .Career-Positioning p {
+        font-size: 18px;
+    }
+    .Career {
+        padding-block: 70px;
+    }
+    .Career-Positioning #button {
+        margin-top: 10px;
+    }    
 }

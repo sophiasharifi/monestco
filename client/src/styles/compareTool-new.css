@@ -20,7 +20,7 @@
     padding-bottom: 0.5rem;
     text-align: center;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 400;
     color: #3D3E3F;
     border-bottom: 2px solid #BDBDBD;
 }
@@ -339,6 +339,7 @@
     line-height: 24px;    
     color: #9A9B9C;    
     cursor: pointer;
+    padding-left: 20px;
 }
 
 .compare-card-container {    
@@ -353,8 +354,11 @@
     animation: rotateCard 0.5s ease;
 }
 
-.card-back {        
+.card-back {      
+    display: flex;  
     width: 90%;
+    height: 100%;
+    padding-top: 36px;
     margin: 0 auto;
     text-align: center;
     color: #3D3E3F;
@@ -774,5 +778,12 @@
 
     .brand-name {
         padding: 5px 3px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .brand-name {
+        margin-left: 0px;
+        font-weight: 400;
     }
 }

@@ -7,6 +7,10 @@
     list-style: none;
     text-align: start;
   }
+
+  .compare-dropDown-container {
+    padding: 24px 0 !important;
+  }
   
   .Dropdown-Menu li {
     background: #ffffff;
@@ -28,7 +32,9 @@
   .Comparison-Options {
       display: flex;
       flex-direction: row;
-      justify-content: space-around;
+      justify-content: space-between;
+      margin-left: 73px;
+      width: 88.4%;
   }
 
   .Apparel h1{
@@ -92,9 +98,11 @@
   }
 
   .Selection-Box{  
-    width: 330px;
+    width: 24%;
+    /* width: 290px; */
     height: 150px;
     border-radius: 7px;
+    /* margin-right: 10px; */
   }
   
   .Apparel:hover {

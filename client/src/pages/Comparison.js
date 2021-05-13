@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 
 const Comparison = () => {
   const [companyList, setCompanyList] = useState([]);
+  const [searchList, setSearchList] = useState([]);
   const [showList, setShowList] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [selectedCompaniesList, setSelectedCompaniesList] = useState(["","",""]);
@@ -26,6 +27,8 @@ const Comparison = () => {
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
+    const searchLi = companyList.filter(company => company.toLowerCase().includes(e.target.value.toLowerCase()))    
+    setSearchList(searchLi)
     setShowList(true);
   };
 
@@ -92,6 +95,9 @@ const Comparison = () => {
   //    })}
   // }
   const WomenMenu = () => {
+    setSportMenu(false);
+    setUnisexMenu(false);
+    setShoeMenu(false);
     const arr = []
     companies.companies.map(company => {
         if(company.category === "Women")
@@ -112,6 +118,9 @@ const Comparison = () => {
   }
 
   const ShoeMenu = () => {
+    setUnisexMenu(false);
+    setShoeMenu(false);
+    setWomenMenu(false);
     const arr = []
     companies.companies.map(company => {
         if(company.category === "Shoes")
@@ -132,6 +141,9 @@ const Comparison = () => {
   }
 
   const UnisexMenu = () => {
+    setShoeMenu(false);
+    setWomenMenu(false);
+    setSportMenu(false);
     const arr = []
     companies.companies.map(company => {
         if(company.category === "Unisex")
@@ -152,6 +164,9 @@ const Comparison = () => {
   }
 
   const SportsMenu = () => {
+    setShoeMenu(false);
+    setWomenMenu(false);
+    setUnisexMenu(false);
     const arr = []
     companies.companies.map(company => {
         if(company.category === "Sportswear")
@@ -251,7 +266,7 @@ const Comparison = () => {
             ></i>
             {showList && (
               <div className="mobile-search-companyList">
-                {companyList.map((item, index) => {
+                {searchList.map((item, index) => {
                   return (
                     <div key={index} onClick={() => addBrand(item)}>
                       {item}

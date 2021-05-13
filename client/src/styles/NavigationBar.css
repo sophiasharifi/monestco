@@ -8,6 +8,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0; 
+    z-index: 100;
   }
 
   
@@ -137,8 +140,8 @@
 }
 
 img.logo {
-  width: 150px;
-  height: 150px;
+  width: 125px;
+  /* height: 150px; */
 }
 
 .mobile-search-icon {
@@ -167,6 +170,10 @@ img.logo {
 .seach-input-2>div {
   box-shadow: 0px 2px 9px 3px rgb(152 165 177 / 12%);
   border-radius: 6px;
+}
+
+.compare-dropDown-container {
+
 }
 
 @media screen and (min-width: 850px) {

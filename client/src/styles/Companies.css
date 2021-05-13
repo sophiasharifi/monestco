@@ -382,9 +382,8 @@
 
 .similar_brands-container {
     margin: 2rem 0 5rem;
+    grid-template-columns: auto auto auto auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 35px 23px;
     width: 90%;
 }
 

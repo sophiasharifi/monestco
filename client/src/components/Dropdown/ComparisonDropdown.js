@@ -15,7 +15,7 @@ function ComparisonDropdown({enterCompareDropdown, exitCompareDropdown}) {
   return (
       <ul
         onClick={handleClick}
-        className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'} 
+        className={`compare-dropDown-container ${click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'}`} 
         onMouseEnter={enterCompareDropdown} 
         onMouseLeave={exitCompareDropdown}
         >  
