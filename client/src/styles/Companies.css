@@ -355,7 +355,6 @@
     /* width: 300px; */
     /* margin-top: 3.5rem; */
     width: 80%;
-    margin-left: 10%;
     margin-bottom: 1%;
 }
 
@@ -382,7 +381,8 @@
 
 .similar_brands-container {
     margin: 2rem 0 5rem;
-    grid-template-columns: repeat( 2, max-content);
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 35px 23px;
     display: grid;
     width: 90%;
 }
@@ -456,9 +456,12 @@
 
 .horizontalline2 {
     border: 5px solid #333333;
-    position: absolute;
+    position: relative;
     margin-top: 19px;
-    margin-left: 41.25px;
+    border-start-end-radius: 10px;
+    border-start-end-radius: 1em;   
+    border-end-end-radius: 10px;
+    border-end-end-radius: 1em;
 }
 
 .company-popup-content {
