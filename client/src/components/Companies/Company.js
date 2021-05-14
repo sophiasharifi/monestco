@@ -162,7 +162,9 @@ function rand() {
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
     const [openID, setOpenID] = useState(0);
-    const [showInfo, setShowInfo] = useState(false)
+    const [showInitInfo, setShowInitInfo] = useState(false) //THIS IS THE STATE USED FOR SHOWING COMPANY INITIATIVE INFO!
+    const [showBrandPInfo, setShowBrandPInfo] = useState(false)
+    const [showNewsInfo, setShowNewsInfo] = useState(false)
     const [companyDetails, setCompanyDetails] = React.useState(companyinfo);
     // const [brandScores, setBrandScores] = React.useState(companyScores);
     const [fact, setFact] = React.useState(companyFacts);
@@ -174,9 +176,17 @@ function rand() {
     const [B, setB] = useState(0);
     const [C, setC] = useState(0);
     const [D, setD] = useState(0);
+    
+    const handleCloseNewsInfo = () => {
+        setShowNewsInfo(false)
+    }
 
-    const handleCloseInfo = () => {
-        setShowInfo(false)
+    const handleCloseInitInfo = () => {
+        setShowInitInfo(false)
+    }
+ 
+    const handleCloseBrandPInfo = () => {
+        setShowBrandPInfo(false)
     }
 
     const handleOpen = (k, ID) => {
@@ -212,11 +222,11 @@ function rand() {
             data[0]["Pages"] = pagesarr;
             setCitations(data);
             setState(resp.data);
-            console.log(citations);
+            // console.log(citations);
         })
         setOpenID(k);
         setOpen(true);
-    };
+    };    
 
     const handleClose = () => {
         setOpen(false);
@@ -232,7 +242,7 @@ function rand() {
           issueAdd={news[0]["IssueAddressed"]} issueAddExp={news[0]["IssueAddressedExplanation"]} respTake={news[0]["ResponsibilityTaken"]} respTakenExp = {news[0]["ResponsibilityTakenExplanation"]} newsID={news[0]["ID"]} citID={citations[0]["RelationalID"]} author={citations[0]["Author"]} cittitle={citations[0]["Title"]} pubgroup = {citations[0]["PublishingGroup"]} date = {citations[0]["Date"]} pages = {citations[0]["Pages"]} url = {citations[0]["URL"]} />
       );
 
-    const BrandPerformancePopup = ({handleCloseInfo}) => {
+    const BrandPerformancePopup = ({handleCloseBrandPInfo}) => {
 
         return (
             <div className="company-popup">
@@ -243,13 +253,13 @@ function rand() {
                         Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown.
                         </div>
                     </div>
-                    <HighlightOffRoundedIcon onClick={handleCloseInfo} className="popup-close-icon"/>
+                    <HighlightOffRoundedIcon onClick={handleCloseBrandPInfo} className="popup-close-icon"/>
                 </div>
             </div>
         )
     };
 
-    const NewsPopup = ({handleCloseInfo}) => {
+    const NewsPopup = ({handleCloseNewsInfo}) => {
 
         return (
             <div className="company-popup">
@@ -260,13 +270,13 @@ function rand() {
                         News and recent events summarized with an assessment of the company’s actions taken in response. 
                         </div>
                     </div>
-                    <HighlightOffRoundedIcon onClick={handleCloseInfo} className="popup-close-icon"/>
+                    <HighlightOffRoundedIcon onClick={handleCloseNewsInfo} className="popup-close-icon"/>
                 </div>
             </div>
         )
     };
 
-    const CompanyInitiativePopup = ({handleCloseInfo}) => {
+    const CompanyInitiativePopup = ({handleCloseInitInfo}) => {
 
         return (
             <div className="company-popup">
@@ -277,7 +287,7 @@ function rand() {
                         A showcase of brand initiatives and achievements that are not directly correlated to the scores given.
                         </div>
                     </div>
-                    <HighlightOffRoundedIcon onClick={handleCloseInfo} className="popup-close-icon"/>
+                    <HighlightOffRoundedIcon onClick={handleCloseInitInfo} className="popup-close-icon"/>
                 </div>
             </div>
         )
@@ -345,9 +355,9 @@ function rand() {
             return(
                 <div className='brand_info-text'>Performance is scored following an assessment of company policies, practices and actions taken in each of the following categories. To understand the scores given, click on Detailed Breakdown.</div>
                 )
-        } else if ( showInfo && tabView ) { //tab view
+        } else if ( showBrandPInfo && tabView ) { //tab view
             return(
-                    <BrandPerformancePopup handleCloseInfo={handleCloseInfo} />
+                    <BrandPerformancePopup handleCloseBrandPInfo={handleCloseBrandPInfo} />
                 )
         } else return null
 
@@ -374,9 +384,9 @@ function rand() {
             return(
                 <div className='brand_info-text'>A showcase of brand initiatives and achievements that are not directly correlated to the scores given.</div>
                 )
-        } else if ( showInfo && tabView ) { //tab view
+        } else if ( showInitInfo && tabView ) { //tab view
             return(
-                    <CompanyInitiativePopup handleCloseInfo={handleCloseInfo} />
+                    <CompanyInitiativePopup handleCloseInitInfo={handleCloseInitInfo} />
                 )
         } else return null
 
@@ -403,9 +413,9 @@ function rand() {
             return(
                 <div className='brand_info-text'>News and recent events summarized with an assessment of the company’s actions taken in response.</div>
                 )
-        } else if ( showInfo && tabView ) { //tab view
+        } else if ( showNewsInfo && tabView ) { //tab view
             return(
-                    <NewsPopup handleCloseInfo={handleCloseInfo} />
+                    <NewsPopup handleCloseNewsInfo={handleCloseNewsInfo} />
                 )
         } else return null
 
@@ -424,7 +434,7 @@ function rand() {
                     params: companyName
                 }
         ).then((resp) => {
-            console.log(resp.data);
+            // console.log(resp.data);
             let data = companyDetails;
             let score = (parseInt(resp.data[0]["Ascore"]) + parseInt(resp.data[0]["Bscore"]) + parseInt(resp.data[0]["Cscore"]) + parseInt(resp.data[0]["Dscore"]))/4;
             data[0]["TotalScore"] = score;
@@ -446,7 +456,7 @@ function rand() {
                 }
             )
             .then((resp) => {
-                console.log(resp.data);
+                // console.log(resp.data);
                 let data = companyDetails;
                 // data[0]["A_ID"] = resp.data[0]["A_ID"];
                 // data[0]["B_ID"] = resp.data[0]["B_ID"];
@@ -462,7 +472,7 @@ function rand() {
                 data[0]["SimilarCompany3"] = resp.data[0]["SimilarCompany3"];
                 data[0]["SimilarCompany4"] = resp.data[0]["SimilarCompany4"];
                 data[0]["Subsidiary"] = resp.data[0]["Subsidiary"];
-                console.log(data[0]["Subsidiary"]);
+                // console.log(data[0]["Subsidiary"]);
                 setCompanyDetails(data);
                 setState(resp.data);
             })
@@ -511,7 +521,7 @@ function rand() {
                 params: companyName
             }
         ).then((resp) =>{
-            console.log(resp.data);
+            // console.log(resp.data);
             let data = companyDetails;
             data[0]["company3Ascore"] = resp.data[0]["Ascore"];
             data[0]["company3Bscore"] = resp.data[0]["Bscore"];
@@ -551,12 +561,15 @@ function rand() {
                         let data = companyFacts;
                         let headingsarr = [];
                         let summaryarr = [];
+                        let idarr = [];
                         resp.data.map(fact => {
                             headingsarr.push(fact['Heading']);
                             summaryarr.push(fact['Summary']);
+                            idarr.push(fact['ID']);
                         })
                         data[0]['Heading'] = headingsarr;
                         data[0]['Summary'] = summaryarr;
+                        data[0]["ID"] = idarr;
                         setFact(data);
                         setState(resp.data);
                     })
@@ -607,7 +620,66 @@ function rand() {
     }, [findLocation]);
 
     const Facts = (factinput) => {
+        const [factCitation, setFactCitation] = useState([]);
+        const [showCitation, setShowCitation] = useState(false);
+
+        const FactCitations = (i) => {
+            if (factCitation.length != 0) {
+                return factCitation[0]["Date"].map((date, k) => {
+                    return <div><i>{factCitation[0]["Title"][i]}</i>, {factCitation[0]["PublishingGroup"][i]}, {factCitation[0]["Date"][i]}, {factCitation[0]["Pages"][i]}</div>
+                })
+            }
+        }
+
+        const showCitations = (i, j) => {
+            // console.log(showCitation);
+            if (showCitation == false) setShowCitation(true);
+            if (showCitation == true) setShowCitation(false);
+            // if (showCitation == -1) {
+            //     setShowCitation(j);
+            //     console.log(showCitation);
+            // }
+            // if (showCitation == j) {
+            //     setShowCitation(-1);
+            //     console.log(showCitation);
+            // }
+                axios.post('/citationsFacts',
+                    {},
+                    {
+                        params: [companyName, i, 'F']
+                    }
+                ).then(resp => {
+                    let data = citations;
+                    let relidarr = [];
+                    let authorarr = [];
+                    let datearr = [];
+                    let pubarr = [];
+                    let titlearr = [];
+                    let urlarr = [];
+                    let pagesarr = [];
+                    resp.data.map(citation => {
+                        relidarr.push(citation["RelationalID"]);
+                        authorarr.push(citation["Author"]);
+                        datearr.push(citation["Date"]);
+                        pubarr.push(citation["PublishingGroup"]);
+                        titlearr.push(citation["Title"]);
+                        urlarr.push(citation["URL"]);
+                        pagesarr.push(citation["Pages"]);
+                    })
+                    data[0]["RelationalID"] = relidarr;
+                    data[0]["Author"] = authorarr;
+                    data[0]["Date"] = datearr;
+                    data[0]["PublishingGroup"] = pubarr;
+                    data[0]["Title"] = titlearr;
+                    data[0]["URL"] = urlarr;
+                    data[0]["Pages"] = pagesarr;
+                    setFactCitation(data);
+                    // console.log("a citations")
+                    // console.log(factCitation);
+                })
+        }
         return Object.entries(factinput[0]['Heading']).map((heading, i) => {
+            // console.log(factCitation);
             return <div>
                 <Accordion className = {classes.dropdown}>
                     <AccordionSummary
@@ -620,6 +692,22 @@ function rand() {
                     <AccordionDetails style={{backgroundColor: '#F2F2F2'}}>
                         <Typography className = {classes.expandMenu}>
                             {factinput[0]['Summary'][i]}
+                            <div
+              className="Fun-Fact"
+              style={{ width: "100%", fontWeight: "700" }}
+            >
+              Citation 
+              <i
+                onClick={() => showCitations(factinput[0]["ID"][i], i)}
+                style={{ borderColor: "#323232" }}
+                className={`Fun-Fact-arrowdown ${showCitation ? "Fun-Fact-arrowdown-rotate" : ""}`}
+              ></i>
+            </div>
+            {showCitation ? 
+            <div>
+                {FactCitations(i)}
+            </div>
+            : null}
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
@@ -629,7 +717,7 @@ function rand() {
     }
 
     const News = (newsinput) => {
-        //console.log(newsinput);
+        // console.log(factCitation);
         return Object.entries(newsinput[0]['Category']).map((category, i) => {
             //console.log(newsinput[0]["Title"][i]);
             return <div>
@@ -722,7 +810,7 @@ function rand() {
                 <div className = 'Right-Menu' style={{marginTop: '7%', marginLeft: '0.5rem'}}>
                     <div className = 'Brand-Section-title'>
                         Brand Performance 
-                        <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
+                        <InfoIcon className='brand_info-icon' onClick={() => setShowBrandPInfo(!showBrandPInfo)} />
                         <BrandPerformance />
                     </div>
                     <div className = 'Decorative-Line'></div>
@@ -781,7 +869,7 @@ function rand() {
                     </div>
                     <div className = 'Brand-Section-title'>
                         Company Initiatives 
-                        <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
+                        <InfoIcon className='brand_info-icon' onClick={() => setShowInitInfo(!showInitInfo)} />
                         <CompanyInitiative />
                         </div>
 
@@ -792,7 +880,7 @@ function rand() {
                     <div className = 'In-The-News'>
                         <div className = 'Brand-Section-title'>
                             In The News
-                            <InfoIcon className='brand_info-icon' onClick={() => setShowInfo(!showInfo)} />
+                            <InfoIcon className='brand_info-icon' onClick={() => setShowNewsInfo(!showNewsInfo)} />
                              <InTheNews />
                             </div>
                         <div className = 'Decorative-Line'></div>

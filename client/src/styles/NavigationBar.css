@@ -145,7 +145,7 @@ img.logo {
 }
 
 .mobile-search-icon {
-  display: none;
+  /* display: none; */
   position: absolute;
   right: 30px;
   cursor: pointer;
@@ -299,7 +299,7 @@ img.logo {
   }
 
   .Menu-Item-search.search-input {
-    display: none;
+    /* display: none; */
     margin-right: 0;
   }
 

@@ -42,7 +42,7 @@ export default function ModalBody({ handleClose, i, title, summary, issueAdd, is
               className="Fun-Fact"
               style={{ width: "100%", fontWeight: "700" }}
             >
-              Citation
+              Citation 
               <i
                 onClick={() => setShowCitation(!showCitation)}
                 style={{ borderColor: "#323232" }}

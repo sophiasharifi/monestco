@@ -454,6 +454,8 @@ app.post('/citationsLong', function(req, res, next) {
 })
 
 app.post('/citations', function(req, res, next) {
+  console.log("req query");
+  console.log(req.query);
   var companyName = req.query['0'];
   var ID = req.query['1'];
   var type = req.query['2'];
@@ -467,6 +469,27 @@ app.post('/citations', function(req, res, next) {
     }
     next();
   })
+})
+
+app.post('/citationsFacts', function(req, res, next) {
+  console.log("req query");
+  console.log(req.query);
+  var companyName = req.query['0'];
+  var ID = req.query['1'];
+  var type = req.query['2'];
+  db.all("SELECT * FROM Citations WHERE Type=? AND RelationalID=? AND RelationalID IN (SELECT ID FROM Facts WHERE CompanyID IN (SELECT ID FROM companies WHERE Name = ?))", [type, ID, companyName], (err, row) => {
+    if (err) {
+      res.status(400).json({ "error": err.message });
+      return;
+    }
+    if(row){
+      console.log(row);
+      res.status(200).json(row);
+    }
+    next();
+  })
+  console.log(res.data)
+  console.log("here")
 })
 
 app.post('/similarCompany1', function(req,res,next) {

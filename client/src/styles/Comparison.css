@@ -539,7 +539,6 @@ x
 }
 
 @media screen and (max-width:900px) {
-
     .row-1 {
         display: none;
     }
@@ -560,7 +559,7 @@ x
 @media screen and (max-width:700px) {
 
     .compare-search-category-container {
-        flex-wrap: wrap;
+        display: none;
     }
 
     .compare-search-category {
