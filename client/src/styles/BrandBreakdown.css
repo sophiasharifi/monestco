@@ -27,7 +27,9 @@ body {
 
 .breakdown_logo{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    margin: 70px 0 20px;
 }
 
 .breakdown_logoImage {
@@ -35,15 +37,16 @@ body {
     /* width: 15%; */
     /* border: none !important; */
     height: 50%;
-    margin-top: 127px;
+    /* margin-top: 127px; */
     /* object-fit: cover; */
     /* resizeMode: cover; */
     /* background-repeat: no-repeat !important; */
 }
 
 .breakdown_logoText {
-    margin-top: 118px;
-    margin-left:100px;
+    margin: 0;
+    /* margin-top: 118px; */
+    /* margin-left:100px; */
     font-family: DM Sans;
     font-style: normal;
     font-weight: bold;
@@ -190,6 +193,7 @@ body {
     }
     .breakdown_logoText {
         margin-left: 22px;
+        font-size: 54px;
     }
 }
 @media only screen and (max-width: 650px) {  
@@ -222,22 +226,37 @@ body {
         text-align: center;
         color: black;
     }
-    .breakdown_logoText {
-        margin-left: 50px;
+
+    .breakdown_logo{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* align-items: flex-start; */
+        width: 60;
+        height: 60;
     }
+    .breakdown_logoText {
+        margin-top: 20px;
+        margin-left: 0px;
+        font-size: 48px;
+    }
+    .breakdown_logoText span {
+        font-size: 34px !important;
+    }    
+    .breakdown_logoImage {        
+        max-width: 50%;
+        max-height: 250px;
+    }
+
+    /* .breakdown_logoText {
+        margin-left: 50px;
+    } */
 }
 
 @media only screen and (max-width: 400px) {  
     .upper_border {
         width: 250px;
-    }
-    .breakdown_logo{
-        display: flex;
-        justify-content: center;
-        width: 60;
-        height: 60;
-    }
-    
+    }  
     
     .inside_border {
         width: 250px;
@@ -254,7 +273,7 @@ body {
         font-size: 10px;
         text-align: center;
         color: black;
-    }
+    }    
 }
 
 .MuiAccordion-rounded:last-child{

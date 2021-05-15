@@ -191,6 +191,44 @@ img.logo {
   left: 0;
   text-align: start;
   width: 100%;
+  z-index: 20;    
+}
+
+.nav-search-company-container a {
+  color: #4F4F4F;
+}
+
+.nav-search-company-container a:hover {
+  color: #4F4F4F;
+  text-decoration: none;
+}
+
+
+.nav-search-company-container-mobile {
+    font-size: 16px;
+    position: fixed;
+    /* margin-top: 3rem; */
+    background-color: white;
+    box-shadow: 0px 10px 20px rgb(0 0 0 / 12%);
+    border-radius: 15px;
+    line-height: 28px;
+    color: #4F4F4F;
+    padding: 11px;
+    box-sizing: border-box;
+    top: 140px;
+    left: 5%;
+    text-align: start;
+    width: 92%;
+    z-index: 20;    
+}
+
+.nav-search-company-container-mobile a {
+  color: #4F4F4F;
+}
+
+.nav-search-company-container-mobile a:hover {
+  color: #4F4F4F;
+  text-decoration: none;
 }
 
 @media screen and (min-width: 850px) {

@@ -314,6 +314,9 @@
     .arrowdown-new {
         margin-bottom: 4px;
     }
+    .breakdown_info-container {
+        margin-top: 25px;
+    }
     .breakdown_info-container-text {
         font-size: 12px;
         font-weight: 400;
@@ -322,6 +325,9 @@
     .citation-sup {
         font-size: 10px;
         line-height: 12px;
+    }
+    .breakdown_mainField {
+        margin-bottom: 40px;
     }
 }
 
@@ -346,4 +352,20 @@
         margin-bottom: 14px;
     }
     
+}
+
+@media screen and (max-width:400px) {
+
+    .breakdown_mainField-container {
+        grid-template-columns: 13rem 3rem 1fr;
+    }
+
+    .breakdown_subField-container {
+        grid-template-columns: 13rem 3rem 1fr;
+    }
+
+    .breakdown_nestedField {
+        grid-template-columns: 13rem 3rem 1fr;
+    }
+
 }

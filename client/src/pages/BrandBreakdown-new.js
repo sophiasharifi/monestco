@@ -748,7 +748,7 @@ const NestedField = ({ index, item }) => {
 };
 
 const Subfield = ({ item }) => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);  
 
   return (
     <div className="breakdown_subField">
@@ -774,7 +774,7 @@ const Subfield = ({ item }) => {
 };
 
 const Mainfield = ({ item, index }) => {
-  const [show, setShow] = useState(index === 0 ? true : false);
+  const [show, setShow] = useState(window.innerWidth < 600 ? false : index === 0 ? true : false );
 
   return (
     <div className="breakdown_mainField">

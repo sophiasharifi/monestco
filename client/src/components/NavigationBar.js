@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import LogoTransparent from '../assets/monestlogo.png'
@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor:'#fff',
     boxShadow: '0px 2px 9px 3px rgb(152 165 177 / 12%)',    
     padding:'16px 24px',    
+    zIndex: "20"
   }
 }));
 
@@ -60,14 +61,16 @@ function NavigationBar() {
   const [inputValue, setInputValue] = useState("");
   const [showList, setShowList] = useState(false);
 
-  axios.get("/allcompanies").then((resp) => {
-    // console.log(resp.data);
-    const allcompanies = [];
-    for (var i = 0; i < resp.data.rows.length; i++) {
-      allcompanies.push(resp.data.rows[i].Name);
-    }
-    setCompaniesList(allcompanies);
-  });
+  useEffect(() => {
+    axios.get("/allcompanies").then((resp) => {
+      // console.log(resp.data);
+      const allcompanies = [];
+      for (var i = 0; i < resp.data.rows.length; i++) {
+        allcompanies.push(resp.data.rows[i].Name);
+      }
+      setCompaniesList(allcompanies);
+    });
+  },[]);
 
   const handleChange = (e) => {
     if(e.target.value !== "") {
@@ -434,7 +437,7 @@ function NavigationBar() {
                 className="search-input"
                 value={inputValue}
                 onChange={handleChange}
-                onFocus={() => setShowList(true)}
+                // onFocus={() => setShowList(true)}
                 onBlur={() => setTimeout(() => setShowList(false), 200)}
                 InputProps={{
                   startAdornment: (
@@ -445,12 +448,14 @@ function NavigationBar() {
                 }}
                 />               
             </li>
-              {showList && (
+              {showList && !tabView && (
                 <div className="nav-search-company-container">
                   {searchList.map((item, index) => {
                     return (
                       <div key={index}>
-                        {item}
+                        <Link to={'/companies/'+ item} >
+                          {item}
+                        </Link>
                       </div>
                     );
                   })}
@@ -555,10 +560,15 @@ function NavigationBar() {
         <div className='mobile-search-icon'>
           <SearchIcon onClick={() => setShowSearch(!showSearch)} style={{fill:'rgb(50,50,50)', fontSize:'25px'}} />
           {showSearch &&
+          <>
            <TextField 
               id="search-dropdown" 
               placeholder="Search for the brand"
               className={`${classes.searchInput} seach-input-2` }
+              value={inputValue}
+              onChange={handleChange}
+              // onFocus={() => setShowList(true)}
+              onBlur={() => setTimeout(() => setShowList(false), 200)}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -566,7 +576,22 @@ function NavigationBar() {
                   </InputAdornment>
                 ),
               }}
-               />}
+               />
+               {showList && tabView && (
+                <div className="nav-search-company-container-mobile">
+                  {searchList.map((item, index) => {
+                    return (
+                      <div key={index}>
+                        <Link to={'/companies/'+ item} >
+                          {item}
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </>
+               }
         </div>
       </nav>
       </div>
