@@ -1,3 +1,7 @@
+.About-Us-Container {    
+    background: #F5F4F2;
+}
+
 .About-Us{
     /* display: flex;
     justify-content: flex-start; */
@@ -6,7 +10,8 @@
     align-items: center;
     padding: 70px 0;
     background: #F5F4F2;
-    
+    max-width: 1650px;
+    margin: 0 auto;
 }
 
 .body {
@@ -182,14 +187,14 @@ body{
     padding: 6px 15px;
 }
 
-
 .sign_up_section{
     width: 100%;
-    margin: 100px 0 0;
+    margin: 100px auto 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
+    max-width: 1650px;    
 }
 
 .window_logo{
@@ -312,13 +317,19 @@ body{
     margin-bottom: 35px;
     white-space: nowrap;
 }
+
+.Career-Container {
+    background: #F5F4F2;
+}
 .Career{
     width: 100%;
     padding-block: 50px;
     background: #F5F4F2;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center;    
+    max-width: 1650px;
+    margin: 0 auto;
 }
 
 .CareerImg-Positioning{

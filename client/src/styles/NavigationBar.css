@@ -1,16 +1,20 @@
+.Navigation-Bar-Container {
+  background: #ffffff;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
+}
+
 .Navigation-Bar {
     background: #ffffff;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
-
     height: 80px;
     font-size: 1.2rem;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 0; 
-    z-index: 100;
+    max-width: 1650px;
+    margin: 0 auto;
+    /* position: sticky;
+    top: 0; */
   }
 
   
@@ -172,8 +176,21 @@ img.logo {
   border-radius: 6px;
 }
 
-.compare-dropDown-container {
-
+.nav-search-company-container {
+  font-size: 16px;
+  position: absolute;
+  /* margin-top: 3rem; */
+  background-color: white;
+  box-shadow: 0px 10px 20px rgb(0 0 0 / 12%);
+  border-radius: 15px;
+  line-height: 28px;
+  color: #4F4F4F;
+  padding: 11px;
+  box-sizing: border-box;
+  top: 45px;
+  left: 0;
+  text-align: start;
+  width: 100%;
 }
 
 @media screen and (min-width: 850px) {
@@ -287,6 +304,7 @@ img.logo {
     transition: all 0.5s ease;
     z-index: 100;
     bottom: 40%;
+    overflow-y: scroll;
 }
   
   .Mobile-Hamburger-Menu{

@@ -9,6 +9,11 @@
   z-index: 100;
 }
 
+.Dropdown-Menu-Apparel-Container {
+  max-width: 1650px;
+  margin: 0 auto;
+}
+
 .nav-links-gray{
   text-decoration: none;
 }

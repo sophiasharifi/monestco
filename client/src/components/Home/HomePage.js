@@ -27,6 +27,7 @@ function HomePage(){
 
     return(
         <Fragment>
+            <div className = 'About-Us-Container'>
             <div className = 'About-Us'>
                     <div className = 'About-Us-Positioning'>
                     <h1>Monest provides consumers <br></br> 
@@ -44,6 +45,7 @@ function HomePage(){
                     <div className="main_image-container">
                         <img className="main_image" src = {MonestSketch} alt = 'browser sketch'></img>
                     </div>
+            </div>
             </div>
 
             <div className = 'Goals'>  
@@ -69,7 +71,7 @@ function HomePage(){
                 </div>
             </div>           
 
-
+            <div className="sign_up_section-Container">
             <div className="sign_up_section">
                 <div className="window_header_text">Make your purchases more purposeful</div>
                 <div className = 'sign_up-form-container'>
@@ -150,6 +152,8 @@ function HomePage(){
                     </div> 
                 </div> */}
             </div>
+            </div>
+            <div className="Career-Container">
             <div className = "Career">
                 <div className = "Career-Positioning">
                     {/*<img src = {CareerImg} style={{width:'350px', height:'250px', marginLeft:'40%'}}></img>*/}
@@ -163,6 +167,7 @@ function HomePage(){
                     </div>
                 </div>
                 <img className="carrer_image" src = {CareerImg} alt = 'browser sketch'></img>
+            </div>
             </div>
         </Fragment>
         )

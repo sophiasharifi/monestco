@@ -857,7 +857,7 @@ function rand() {
                                     ETHICAL SOURCING
                                     <div className = 'Description'>
                                         <div className='Description-text'>
-                                            Cotton Farming, Deforestation, Animal Welfare
+                                            Cotton Farming, Deforestation, <br/> Animal Welfare
                                         </div>
                                         <div className='Description-data'>
                                         <img src = {SustainableImg}/>

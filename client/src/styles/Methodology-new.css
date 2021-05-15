@@ -15,8 +15,9 @@
     flex-direction: row;
     justify-content: space-around;
     width: 85%;
-    margin: 134px 0 134px 5%;
+    margin: 134px auto;
     position: relative;
+    max-width: 1650px;
 }
 
 .Methodology-index {
@@ -379,3 +380,10 @@
         height: 100px;
     } */
 }
+
+@media screen and (max-width:500px) {
+    .Methodology-btn {        
+        margin-right: 15px;
+    }
+}
+

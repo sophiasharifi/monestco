@@ -59,6 +59,7 @@ color: #3D3E3F;
     left: 63.2%;
     transform: translate(-50%, -50%);
     animation: auto;
+    max-width: 1025px;
 }
 
 .model-title {

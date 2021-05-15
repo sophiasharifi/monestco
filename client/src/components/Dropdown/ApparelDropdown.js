@@ -14,7 +14,8 @@ function ApparelDropdown({enterAppDropdown, exitAppDropdown}) {
         className={click ? 'Dropdown-Menu clicked' : 'Dropdown-Menu'} 
         onMouseEnter={enterAppDropdown}
         onMouseLeave={exitAppDropdown}
-        >  
+        >
+        <div className = "Dropdown-Menu-Apparel-Container">
         {/* Maps over company items -- currently reference the same JS file due to placeholders */}
         <div className = "Category-Titles">
             <h2>Unisex</h2>
@@ -43,6 +44,7 @@ function ApparelDropdown({enterAppDropdown, exitAppDropdown}) {
          </div>
          <div className='all-brand-link'>
             All Brands A-Z
+         </div>
          </div>
       </ul>
   );
