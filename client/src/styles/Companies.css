@@ -1,4 +1,4 @@
-.main-Compare-Container {
+main-Compare-Container {
     display: flex;
     flex-direction: row;
     max-width: 1650px;
@@ -8,9 +8,9 @@
 .Layout {
     max-width: 1650px;
     margin: 0 auto;
-    overflow-x: hidden;
-    overflow-y: hidden;
+    /* overflow-x: hidden; */
 }
+
 .Layout h1{
     font-family: DM Sans;
     font-style: normal;
@@ -41,8 +41,6 @@
     font-weight: bold;
     font-size: 18px;
     color:#3D3E3F;
-    overflow: hidden;
-    overflow-y: hidden;
 }
 
 .Brand-Section-title {
@@ -344,6 +342,7 @@
     font-size: 14px;
 }
 
+
 .Left-Menu {
     margin-top: 15%;
     /* margin-left: 30%;
@@ -358,23 +357,20 @@
     outline-color: rgb(189, 189, 189);
 }
 
-.slide_logo{
-    /* text-align: center; */
-}
-
 .brand_box {
     display: flex;
     flex-direction: column;
     background: #FFFFFF;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.24);
-    margin-top: 2rem;
-    padding-bottom: 2.4rem; 
+    margin-top: 16px;
+    /* padding-bottom: 3rem; */
 }
 
 .brand_logo {
     /* width: 300px; */
     /* margin-top: 3.5rem; */
     width: 80%;
+    margin-left: 10%;
     margin-bottom: 1%;
 }
 
@@ -384,7 +380,9 @@
     font-weight: bold;
     font-size: 64px;
     line-height: 66px;
-    color: #3D3E3F;
+    color: #26385A;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .ml-10perc {
@@ -401,17 +399,24 @@
 
 .similar_brands-container {
     margin: 2rem 0 5rem;
+    display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 35px 23px;
-    display: grid;
     width: 90%;
 }
 
-.Similar-Link{
-    color: inherit;
+.Similar-Link:link{
+    color:#3D3E3F;
     text-decoration: none;
 }
 
+.Similar-Link{
+    color:#3D3E3F
+}
+
+.Similar-Link:hover{
+    color:#BFE0CA;
+}
 .company-popup {
     position: fixed;
     opacity: 1;
@@ -435,7 +440,7 @@
     border-left: 2px solid #333333;
     height: 30px;
     position: absolute;
-    margin-top: 8.5px;
+    margin-top: 10.5px;
     margin-left: 206px;
 }
 
@@ -475,13 +480,11 @@
 }
 
 .horizontalline2 {
-    z-index: 100;
-    /* position: absolute; */
-    margin-top: 1.75%;
     border: 5px solid #333333;
-    border-start-end-radius: 10px;
-    border-start-end-radius: 1em;   
-    border-end-end-radius: 10px;
+    position: absolute;
+    margin-top: 21px;
+    margin-left: 10%;
+    border-start-end-radius: 1em;
     border-end-end-radius: 1em;
 }
 
@@ -503,6 +506,16 @@
     font-weight: 700;
     opacity: 1;
     /* animation: moveUp 0.5s; */
+}
+
+.performing-Container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgb(79, 79, 79);
+    font-weight: 400;
+    margin: 0 auto;
 }
 
 @media only screen and (max-width: 1120px) {
@@ -568,6 +581,12 @@
     .brand_inside_text>span:last-of-type {
         font-size: 24px;
     }
+    .horizontalline2 {
+        margin-top: 15px;
+    }
+    .verticalline2 {
+        margin-top: 4.5px;
+    }
 }
 
 @media only screen and (max-width: 700px) {
@@ -590,7 +609,7 @@
     }
 
     .brand_box {
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
 
     .brand_inside_text>span:first-of-type {
@@ -629,6 +648,19 @@
     .Description-score:last-child {
         font-size: 20px;
     }
+    .Layout {
+        /* overflow-x: auto; */
+    }
+    .company-popup-content {
+        width: 90vw;
+        padding-bottom: 2rem;
+    }
+    .horizontalline2 {
+        margin-top: 17px;
+    }
+    .verticalline2 {
+        margin-top: 6.5px;
+    }
 
 }
 
@@ -646,5 +678,17 @@
         font-size: 48px;
         line-height: 66px;
         color: #3D3E3F;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .Layout {
+        overflow-x: hidden;
+    }
+    .horizontalline2 {
+        margin-top: 15px;
+    }
+    .verticalline2 {
+        margin-top: 4.5px;
     }
 }

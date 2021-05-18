@@ -6,9 +6,9 @@
 
 .compare-input-container {
     margin: 4rem 0 2rem 13.5rem;
-    display: grid;
-    grid-template-columns: repeat( 3, minmax( 6rem, 13rem ) );
-    column-gap: 1.5rem;
+    /* display: grid; */
+    grid-template-columns: repeat( 3, minmax( 5rem, 12rem ) );
+    /* column-gap: 1.5rem; */
     
 }
 
@@ -22,6 +22,7 @@
     font-size: 1rem;
     font-weight: 400;
     color: #3D3E3F;
+    /* margin-left: 3%; */
     border-bottom: 2px solid #BDBDBD;
 }
 
@@ -66,7 +67,8 @@
 .compare__tool-mainField {
     display: flex;
     flex-direction: column;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
+    /* border: solid; */
 }
 
 .mainField-container {
@@ -240,6 +242,7 @@
 
 .brand-name-placeholder {
     font-size: 1rem;
+    display:inline-block;  
     font-weight: 400;
     color: #bdbdbd;
     text-align: center;
@@ -397,7 +400,7 @@
 
     .compare-input-container {
         grid-template-columns: repeat( 3, minmax( 6rem, 12rem ) );
-        margin-left: 12.5rem;
+        /* margin-left: 12.5rem; */
     }
 
     .compare-companyList-container {
@@ -504,6 +507,10 @@
 
 @media screen and (max-width:900px) {
 
+    .desktop-only {
+        display: none;
+    }
+
     .compare-learn-more{
         text-decoration: none;
         margin-right: 9px;
@@ -552,7 +559,8 @@
 
     .compare-learn-more{
         text-decoration: none;
-        margin-right: 9px;
+        margin-right: 0;
+        padding-left: 0;
     }
 
     /* .compare-input-container>input {
@@ -625,7 +633,7 @@
 
     .compare-learn-more{
         text-decoration: none;
-        margin-right: 9px;
+        /* margin-right: 9px; */
     }
 
     .compare-input-container {
@@ -742,7 +750,8 @@
 
     .compare-learn-more{
         text-decoration: none;
-        margin-right: 9px;
+        /* margin-right: 9px; */
+        white-space: nowrap;
     }
 
     .compare-input-container {

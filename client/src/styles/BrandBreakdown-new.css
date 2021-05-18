@@ -272,6 +272,7 @@
     .popup-content {
         width: 90vw;
         left: 4vw;
+        padding-bottom: 6rem;
     }
 
     .breakdown_nestedField {
@@ -329,6 +330,9 @@
     .breakdown_mainField {
         margin-bottom: 40px;
     }
+    .breakdown_nestedField.selected {
+        grid-template-rows: minmax(6rem, max-content);
+    }    
 }
 
 @media screen and (max-width:480px) {

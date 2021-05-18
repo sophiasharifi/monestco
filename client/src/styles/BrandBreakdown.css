@@ -27,7 +27,7 @@ body {
 
 .breakdown_logo{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     margin: 70px 0 20px;
 }
