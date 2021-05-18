@@ -614,11 +614,14 @@ const Popup = ({item, i, k, closePopup}) => {
     )
 };
 
-const NestedField = ({ index, item }) => {
+const NestedField = ({ key, indexKey, item, showSubField, setShowSubField }) => {
   const [tabView, setTabView] = useState(window.innerWidth < 800);
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
   const [showInfo, setShowInfo] = useState(-1);
   const [showPopup, setShowPopup] = useState(-1);
+
+  console.log("key");
+  console.log(key);
 
   const closePopup = () => {
     setShowPopup(-1);
@@ -662,8 +665,6 @@ const NestedField = ({ index, item }) => {
     });
   } else if (tabView && !mobileView) {
     //tab view
-    console.log(item.citations[1].title);
-    console.log(item);
     return item.scores.map((score, i) => {
       return (<div
         className={
@@ -678,7 +679,9 @@ const NestedField = ({ index, item }) => {
             {item.citations[i].title.map((title, k) => {
               return (
                 <span>
-                  <sup className="citation-sup" onClick={() => setShowPopup(k)}>[{k+1}]</sup>
+                  <sup className="citation-sup" onClick={() => {
+                    setShowPopup(k);
+                  }}>[{k+1}]</sup>
                   {showPopup==k && <Popup item={item} i={i} k={k} closePopup={closePopup} />}
                 </span>
               )
@@ -689,12 +692,18 @@ const NestedField = ({ index, item }) => {
         )}
         {showInfo==i ? (
           <CancelIcon
-            onClick={() => setShowInfo(-1)}
+            onClick={() => {
+              setShowInfo(-1);
+              // setState({showSubField: null})
+            }}
             className="breakdown_info-icon"
           />
         ) : (
           <InfoIcon
-            onClick={() => setShowInfo(i)}
+            onClick={() => {
+              setShowInfo(i)
+              // setState({showSubField: i})
+            }}
             className="breakdown_info-icon"
           />
         )}
@@ -747,53 +756,104 @@ const NestedField = ({ index, item }) => {
   }
 };
 
-const Subfield = ({ item }) => {
-  const [show, setShow] = useState(false);  
+const Subfield = ({ indexKey, item, showNested, setShowNested }) => {
+  const [show, setShow] = useState(null);
+  const [showSubField, setShowSubField] = useState(null);
+  console.log("shownesteddddd");
+  console.log(showNested);
 
   return (
     <div className="breakdown_subField">
       <div
-        onClick={() => setShow(!show)}
+        // onClick={() => 
+        //   setShow(!show)
+        // }
+        onClick={() => {
+          if (showNested === indexKey) {
+            setShow(false);
+            setShowNested(null);
+        } else {
+          setShow(true);
+          setShowNested(indexKey);
+        }
+      }}
         className="breakdown_subField-container"
       >
         <div className="breakdown_subField-title">{item.mainNestedField}</div>
         <div className="breakdown_subField-score">{item.mainNestedScore}/{item.total}</div>
         <ExpandMoreSharpIcon
-          onClick={() => setShow(!show)}
-          className={show ? "circle-breakdown-close" : "circle-breakdown fill-white"}          
+        //   onClick={() => {
+        //     if (showNested === indexKey) {
+        //       setShow(false);
+        //       setShowNested(null);
+        //   } else {
+        //     setShow(true);
+        //     setShowNested(indexKey);
+        //   }
+        // }}
+        onClick={() => 
+          setShow(!show)
+        }
+          className={show && (showNested == indexKey) ? "circle-breakdown-close" : "circle-breakdown fill-white"}          
         />
       </div>
-      <div className={`animate-field ${show ? 'animate' : ''}`}>
-        {show &&
+      <div className={`animate-field ${show && (showNested == indexKey) ? 'animate' : ''}`}>
+        {show && (showNested == indexKey) &&
           item.subNestedField.map((item, index) => {
-            return <NestedField key={index} item={item} />;
+            return <NestedField key={index} indexKey={index} item={item} setShowSubField={(key) => setShowSubField(key)} showSubField={showSubField} />;
           })}
       </div>
     </div>
   );
 };
 
-const Mainfield = ({ item, index }) => {
+const Mainfield = ({ item, index, indexKey, showSubField, setShowSubField }) => {
   const [show, setShow] = useState(window.innerWidth < 600 ? false : index === 0 ? true : false );
+  const [showNested, setShowNested] = useState(null);
+  // const [show, setShow] = useState(false);
+  // const [showSubField, setShowSubField] = useState(null);
+  console.log("showsub");
+  console.log(showSubField);
+  console.log(show);
 
   return (
     <div className="breakdown_mainField">
       <div
-        onClick={() => setShow(!show)}
+        onClick={() => {
+          if (showSubField == indexKey) {
+            // setShowNested(null);
+            setShow(false);
+            setShowSubField(null);
+          } else {
+            // setShowNested(null);
+            setShow(true);
+            setShowSubField(indexKey);
+          }
+        }}
+        // onClick={() => setShow(!show)}
         className="breakdown_mainField-container"
       >
         <div className="breakdown_mainField-title">{item.mainField}</div>
         <div className="breakdown_mainField-score">{item.mainScore}/100</div>
         <ExpandMoreSharpIcon
+          // onClick={() => {
+          //   if (showSubField == indexKey) {
+          //     setShow(!show);
+          //     setShowSubField(null);
+          //   } else {
+          //     setShow(!show);
+          //     setShowSubField(indexKey);
+          //   }
+          // }}
           onClick={() => setShow(!show)}
-          className={show ? "circle-breakdown-close" : "circle-breakdown"}
+          className={show && showSubField === indexKey ? "circle-breakdown-close" : "circle-breakdown"}
           style={{backgroundColor:'#FAF7F2', fill:'#26385A'}}
         />
       </div>
-      <div className={`animate-field ${show ? 'animate' : ''}`}>
-        {show &&
+      <div className={`animate-field ${show && showSubField === indexKey ? 'animate' : ''}`}>
+        {show && (showSubField == indexKey) && 
           item.subfield.map((item, index) => {
-            return <Subfield key={index} item={item} />;
+            return <Subfield key={index} indexKey={index} item={item} showNested={showNested} setShowNested={(key) => setShowNested(key)}/>;
           })}
       </div>
     </div>
@@ -810,8 +870,13 @@ class BrandBreakdown extends React.Component {
     // D: {D1score: 0, D11score: 0, D11text: "", D12score: 0, D12text: "", D2score: 0, D21score: 0, D21text: "", D22score: 0, D22text: "", D23score: 0, D23text: "", D3score: 0, D31score: 0, D31text: "", D32score: 0, D32text: "", D33score: 0, D33text: "", D34score: 0, D34text: "", D35score: 0, D35text: ""},
     logo: "",
     subsidiary: "",
-    reset: false
+    reset: false,
+    showSubField: null
     // dimensions: {}
+  }
+
+  setShowSubField = (val) => {
+    this.setState({showSubField: val});
   }
 
   componentDidMount () {
@@ -1470,7 +1535,7 @@ class BrandBreakdown extends React.Component {
       </div>}
       <div className="breakdown_data-container">
         {field.map((item, index) => (
-          <Mainfield key={index} item={item} index={index} />
+          <Mainfield key={index} indexKey={index} showSubField={this.state.showSubField} setShowSubField={this.setShowSubField} item={item} index={index} />
         ))}
       </div>
     </div>

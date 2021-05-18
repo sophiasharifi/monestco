@@ -1201,6 +1201,8 @@ const NestedField = ({ item, subIndexKey, inputBrandOne, inputBrandTwo, inputBra
 const Subfield = ({indexKey, item, showSubField, setShowSubField, inputBrandOne, inputBrandTwo, inputBrandThree }) => {  
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
   const [show, setShow] = useState(null);
+  console.log("show");
+  console.log(show);
   
   useLayoutEffect(() => {
     function updateSize() {
