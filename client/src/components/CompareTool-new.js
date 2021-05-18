@@ -901,7 +901,7 @@ const ScoreContainer = ({
     // console.log(score);]
     if (score > industrialStandard[1]) {
       return (
-        <div className="compare-card-container greensquare2">
+        <div className={`compare-card-container ${!firstLayer && !secondLayer && "greensquare2"}`}>
           {!showLearnMoreText && (
             <div
               className={
@@ -969,7 +969,7 @@ const ScoreContainer = ({
       );
     } else {
       return (
-        <div className="compare-card-container orangesquare2">
+        <div className={`compare-card-container ${!firstLayer && !secondLayer && "orangesquare2"}`}>
           {!showLearnMoreText && (
             <div
               className={
