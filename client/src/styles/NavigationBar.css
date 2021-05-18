@@ -1,6 +1,9 @@
 .Navigation-Bar-Container {
   background: #ffffff;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .Navigation-Bar {
@@ -13,8 +16,6 @@
     align-items: center;
     max-width: 1650px;
     margin: 0 auto;
-    /* position: sticky;
-    top: 0; */
   }
 
   
@@ -352,6 +353,7 @@ img.logo {
     left: 20px;
     font-size: 1.8rem;
     cursor: pointer;
+    height: 100%;
   }
 
   .Menu-Item-search.search-input {

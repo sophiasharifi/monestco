@@ -558,25 +558,6 @@ function NavigationBar() {
         }</>
         </ul>
         <div className='mobile-search-icon'>
-          <SearchIcon onClick={() => setShowSearch(!showSearch)} style={{fill:'rgb(50,50,50)', fontSize:'25px'}} />
-          {showSearch &&
-          <>
-           <TextField 
-              id="search-dropdown" 
-              placeholder="Search for the brand"
-              className={`${classes.searchInput} seach-input-2` }
-              value={inputValue}
-              onChange={handleChange}
-              // onFocus={() => setShowList(true)}
-              onBlur={() => setTimeout(() => setShowList(false), 200)}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon style={{fill:'rgba(50,50,50,0.5)'}} />
-                  </InputAdornment>
-                ),
-              }}
-               />
                {showList && tabView && (
                 <div className="nav-search-company-container-mobile">
                   {searchList.map((item, index) => {
@@ -590,8 +571,6 @@ function NavigationBar() {
                   })}
                 </div>
               )}
-            </>
-               }
         </div>
       </nav>
       </div>

@@ -570,6 +570,8 @@ function rand() {
                         data[0]['Heading'] = headingsarr;
                         data[0]['Summary'] = summaryarr;
                         data[0]["ID"] = idarr;
+                        console.log("stuff in idarr")
+                        console.log(idarr);
                         setFact(data);
                         setState(resp.data);
                     })
@@ -619,19 +621,25 @@ function rand() {
                         })
     }, [findLocation]);
 
+    // FACT CITATION STARTS HEREEEE
+
     const Facts = (factinput) => {
         const [factCitation, setFactCitation] = useState([]);
         const [showCitation, setShowCitation] = useState(false);
 
+        console.log("i am factCitation")
         const FactCitations = (i) => {
-            if (factCitation.length != 0) {
+            console.log(factCitation)
+            if(factCitation.length != 0) {
                 return factCitation[0]["Date"].map((date, k) => {
-                    return <div><i>{factCitation[0]["Title"][i]}</i>, {factCitation[0]["PublishingGroup"][i]}, {factCitation[0]["Date"][i]}, {factCitation[0]["Pages"][i]}</div>
+                    return <div><i>{factCitation[0]["RelationalID"]}</i>, {factCitation[0]["PublishingGroup"]}, {factCitation[0]["Date"]}, {factCitation[0]["Pages"]}</div>
                 })
             }
         }
 
         const showCitations = (i, j) => {
+            console.log("i am i")
+            console.log(factCitation)
             // console.log(showCitation);
             if (showCitation == false) setShowCitation(true);
             if (showCitation == true) setShowCitation(false);
@@ -673,9 +681,7 @@ function rand() {
                     data[0]["Title"] = titlearr;
                     data[0]["URL"] = urlarr;
                     data[0]["Pages"] = pagesarr;
-                    setFactCitation(data);
-                    // console.log("a citations")
-                    // console.log(factCitation);
+                    setFactCitation(data)
                 })
         }
         return Object.entries(factinput[0]['Heading']).map((heading, i) => {
@@ -698,6 +704,7 @@ function rand() {
             >
               Citation 
               <i
+                
                 onClick={() => showCitations(factinput[0]["ID"][i], i)}
                 style={{ borderColor: "#323232" }}
                 className={`Fun-Fact-arrowdown ${showCitation ? "Fun-Fact-arrowdown-rotate" : ""}`}
@@ -904,12 +911,12 @@ function rand() {
                             <div>
                             <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany1"]}>{companyDetails[0]["SimilarCompany1"]}</Link> 
                                 <div className='brand_box'>
-                                    <div className="d-flex justify-content-center">
+                                    {/* <div className="d-flex justify-content-center"> */}
                                     {/* <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
                                     <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div> */}
                                     <div class="horizontalline2" style={{width: `${companyDetails[0]["comp1SliderLength"]}px` }}></div>
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="slide_logo"/>
-                                    </div>
+                                    {/* </div> */}
                                     <div className="brand_inside_text ml-10perc">
                                         <span>{Math.round(companyDetails[0]["company1TotalScore"], 2)}</span>
                                         <span>/100</span>
@@ -919,12 +926,11 @@ function rand() {
                             <div>
                             <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany2"]}>{companyDetails[0]["SimilarCompany2"]}</Link> 
                                 <div className='brand_box'>
-                                    <div className="d-flex justify-content-center">
                                     {/* <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
                                     <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div> */}
-                                    <div class="horizontalline" style={{width: `${companyDetails[0]["comp2SliderLength"]}px` }}></div>
+                                    <div class="horizontalline2" style={{width: `${companyDetails[0]["comp2SliderLength"]}px` }}></div>
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="slide_logo"/>
-                                    </div>
+                                    {/* </div> */}
                                     <div className="brand_inside_text ml-10perc">
                                         <span>{Math.round(companyDetails[0]["company2TotalScore"], 2)}</span>
                                         <span>/100</span>
@@ -934,12 +940,10 @@ function rand() {
                             <div>
                             <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany3"]}>{companyDetails[0]["SimilarCompany3"]}</Link> 
                                 <div className='brand_box'>
-                                    <div className="d-flex justify-content-center">
                                     {/* <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
                                         <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div> */}
                                         <div class="horizontalline2" style={{width: `${companyDetails[0]["comp3SliderLength"]}px` }}></div>
                                         <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="slide_logo"/>
-                                    </div>
                                     <div className="brand_inside_text ml-10perc">
                                         <span>{Math.round(companyDetails[0]["company3TotalScore"], 2)}</span>
                                         <span>/100</span>
@@ -949,15 +953,17 @@ function rand() {
                             <div>
                             <Link className = 'Similar-Link' to = {'/companies/'+ companyDetails[0]["SimilarCompany4"]}>{companyDetails[0]["SimilarCompany4"]}</Link> 
                                 <div className='brand_box'>
-                                    <div className="d-flex justify-content-center">
+                                    {/* <div className="d-flex justify-content-center"> */}
                                     {/* <div style={{fontFamily: 'DM Sans', fontWeight: 500, fontSize: '14px', marginTop: '8%', textAlign: 'center'}}>industry average</div>
                                     <div style={{textAlign: 'center'}}><AiFillCaretDown style={{}}/></div> */}
+                                    <div>
                                     <div class="horizontalline2" style={{width: `${companyDetails[0]["comp4SliderLength"]}px` }}></div>
                                     <img src="https://github.com/sophiasharifi/monestco/blob/main/images/slider%20backgroud.png?raw=true" className="slide_logo"/>
-                                    </div>
+                                    {/* </div> */}
                                     <div className="brand_inside_text ml-10perc">
                                         <span>{Math.round(companyDetails[0]["company4TotalScore"], 2)}</span>
                                         <span>/100</span>
+                                    </div>
                                     </div>
                                 </div>
                             </div>                            

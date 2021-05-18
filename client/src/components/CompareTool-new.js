@@ -155,7 +155,7 @@ const field = [
           },
           {
             title: "Ensures employees are receiving equal pay for equal work",
-            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+            popupText: "Actions are taken to achieve pay parity and progress is published on current gender wage gaps for hourly and bonus pay.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             scoreDenominator : 10,
             industrialStandard: [],

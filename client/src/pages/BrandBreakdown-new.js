@@ -1465,7 +1465,7 @@ class BrandBreakdown extends React.Component {
       {this.state.subsidiary != null && <div className="breakdown_info-container">
         <InfoIcon style={{fontSize:'15px', fill:'#3D3E3F', marginRight:'4px'}}/>
         <span className="breakdown_info-container-text">
-          As the parent company, {this.state.subsidiary} manages and oversees Uniqlo.
+          As the parent company, {this.state.subsidiary} manages and oversees {this.state.companyName}.
         </span>
       </div>}
       <div className="breakdown_data-container">

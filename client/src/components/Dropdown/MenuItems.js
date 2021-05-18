@@ -39,7 +39,7 @@ export const MenuItems = [
     },
     {
         title: 'Nasty Gal',
-        path: '/companies/Banana Republic',
+        path: '/companies/Nasty Gal',
         cName: 'nav-links'
     },
     {

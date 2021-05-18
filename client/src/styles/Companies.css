@@ -9,8 +9,8 @@
     max-width: 1650px;
     margin: 0 auto;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
-
 .Layout h1{
     font-family: DM Sans;
     font-style: normal;
@@ -41,6 +41,8 @@
     font-weight: bold;
     font-size: 18px;
     color:#3D3E3F;
+    overflow: hidden;
+    overflow-y: hidden;
 }
 
 .Brand-Section-title {
@@ -342,7 +344,6 @@
     font-size: 14px;
 }
 
-
 .Left-Menu {
     margin-top: 15%;
     /* margin-left: 30%;
@@ -357,13 +358,17 @@
     outline-color: rgb(189, 189, 189);
 }
 
+.slide_logo{
+    /* text-align: center; */
+}
+
 .brand_box {
     display: flex;
     flex-direction: column;
     background: #FFFFFF;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.24);
     margin-top: 2rem;
-    /* padding-bottom: 3rem; */
+    padding-bottom: 2.4rem; 
 }
 
 .brand_logo {
@@ -470,9 +475,10 @@
 }
 
 .horizontalline2 {
+    z-index: 100;
+    /* position: absolute; */
+    margin-top: 1.75%;
     border: 5px solid #333333;
-    position: relative;
-    margin-top: 19px;
     border-start-end-radius: 10px;
     border-start-end-radius: 1em;   
     border-end-end-radius: 10px;
