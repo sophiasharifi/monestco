@@ -41,7 +41,6 @@ export default function BrandDirectory() {
             }
         }
     }
-    console.log(letterArray['A'])
     return (
         <div className="brand_directory">
             <div className="brand_directory_title">

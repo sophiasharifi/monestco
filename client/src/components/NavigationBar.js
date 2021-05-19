@@ -63,7 +63,6 @@ function NavigationBar() {
 
   useEffect(() => {
     axios.get("/allcompanies").then((resp) => {
-      // console.log(resp.data);
       const allcompanies = [];
       for (var i = 0; i < resp.data.rows.length; i++) {
         allcompanies.push(resp.data.rows[i].Name);
@@ -238,8 +237,6 @@ function NavigationBar() {
     }
     setShowBrands(brands);
     setSpecificBrands(true);
-    console.log(keepNav);
-    console.log(specificBrands);
     // axios.post('/brandsbycategory',
     //         {},
     //         {
@@ -255,7 +252,6 @@ function NavigationBar() {
   }
 
   const NavBrands = () => {
-    console.log(showBrands);
     return showBrands.map( brand => {
       return (<li className='Menu-Item only-mobile' onMouseEnter={enterTechDropdownLink} onMouseLeave={exitTechDropdownLink} >
             <Link
@@ -459,7 +455,7 @@ function NavigationBar() {
             {(compareDropdownLink || compareDropdown) && <ComparisonDropdown enterCompareDropdown={enterCompareDropdown} exitCompareDropdown={exitCompareDropdown} />}
           </li>
           <div style={{position:"relative"}}>
-            <li className='Menu-Item Menu-Item-search' >
+            <li className='Menu-Item Menu-Item-search only-desktop' >
               <TextField 
                 id="standard-basic" 
                 placeholder="Search"
@@ -598,6 +594,25 @@ function NavigationBar() {
         }</>
         </ul>
         <div className='mobile-search-icon'>
+          <SearchIcon onClick={() => setShowSearch(!showSearch)} style={{fill:'rgb(50,50,50)', fontSize:'25px'}} />
+          {showSearch &&
+          <>
+           <TextField 
+              id="search-dropdown" 
+              placeholder="Search for the brand"
+              className={`${classes.searchInput} seach-input-2` }
+              value={inputValue}
+              onChange={handleChange}
+              onFocus={() => inputValue && setShowList(true)}
+              onBlur={() => setTimeout(() => setShowList(false), 200)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon style={{fill:'rgba(50,50,50,0.5)'}} />
+                  </InputAdornment>
+                ),
+              }}
+               />
                {showList && tabView && (
                 <div className="nav-search-company-container-mobile">
                   {searchList.map((item, index) => {
@@ -611,6 +626,8 @@ function NavigationBar() {
                   })}
                 </div>
               )}
+            </>
+               }
         </div>
       </nav>
       </div>

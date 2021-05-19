@@ -738,7 +738,7 @@ app.post('/brandsbycategory', (req, res) => {
 
 app.get('/industry', (req, res) => {
   var industryID = 1;
-  db.all("SELECT * FROM IndustryStandards WHERE ID = ?", [industryID], (err, rows) => {
+  db.all("SELECT * FROM industrystandards WHERE ID = ?", [industryID], (err, rows) => {
     if (err) {
       res.status(400).json({ "error": err.message });
       return;

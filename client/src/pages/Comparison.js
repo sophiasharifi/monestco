@@ -19,6 +19,7 @@ const Comparison = () => {
   const [showList, setShowList] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [selectedCompaniesList, setSelectedCompaniesList] = useState(["","",""]);
+  const [inputBrand, setInputBrands] = useState([false, false, false]);
   const [mobileView, setMobileView ] = useState(window.innerWidth < 600)
   const [showSportMenu, setSportMenu] = useState(false)
   const [showUnisexMenu, setUnisexMenu] = useState(false)
@@ -305,6 +306,8 @@ const Comparison = () => {
             </div>
           </div>
           <CompareTool
+            inputBrand={inputBrand}
+            setInputBrands={setInputBrands}
             selectedCompaniesList={selectedCompaniesList}
             fetchBrand={fetchBrand}
             removeBrand={removeBrand}

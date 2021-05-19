@@ -16,6 +16,18 @@
     cursor: pointer;
 }
 
+.companies_result:link{
+    text-decoration: none;
+}
+
+.companies_result{
+    color: #26385A;
+}
+
+.companies_result:hover{
+    color: #BFE0CA;
+}
+
 .categoryfocus {
     background-color: #BFE0CA;
     transition: 0.2s;
@@ -540,6 +552,11 @@ x
 
 @media screen and (max-width:900px) {
 
+    #filterbutton, #filterbutton1, #filterbutton2, #filterbutton3, #filterbutton4,
+#filterbutton5, span:hover {
+    display: none;
+}
+
     .row-1 {
         display: none;
     }
@@ -558,6 +575,11 @@ x
 }
 
 @media screen and (max-width:700px) {
+
+    #filterbutton, #filterbutton1, #filterbutton2, #filterbutton3, #filterbutton4,
+    #filterbutton5, span:hover {
+        display: none;
+    }
 
     .compare-search-category-container {
         flex-wrap: wrap;

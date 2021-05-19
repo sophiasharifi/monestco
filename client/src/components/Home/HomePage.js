@@ -67,6 +67,7 @@ function HomePage(){
                 {/* <br></br><br></br><br></br><br></br><br></br> */}
             <div className = 'Video d-flex justify-content-center'>
                 <div className="embed-responsive embed-responsive-21by9 Video-image">
+                {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/XByA4I7TP-8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
                     <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/XByA4I7TP-8" allowFullScreen></iframe>
                 </div>
             </div>           

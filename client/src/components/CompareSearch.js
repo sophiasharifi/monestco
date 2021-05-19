@@ -42,13 +42,10 @@ class CompareSearch extends React.Component {
     });
     const unisexCompanies = [];
     companies.companies.map((company) => {
-      console.log(company.name);
       if (company.category === "Unisex") {
         unisexCompanies.push(company.name);
       }
     });
-    console.log("unisex companies->");
-    console.log(unisexCompanies);
     this.setState({ foundCompanies: unisexCompanies });
     // this.renderCompanies(foundCompanies)
   }
@@ -142,21 +139,17 @@ class CompareSearch extends React.Component {
   }
 
   componentDidMount() {
-    const allCompanies = [];
+    const unisexCompanies = [];
     companies.companies.map((company) => {
-      allCompanies.push(company.name);
+      if (company.category === "Unisex") {
+        unisexCompanies.push(company.name);
+      }
     });
-    this.setState({
-      all: true,
-      foundCompanies: allCompanies,
-    });
+    this.setState({ unisex:true, foundCompanies: unisexCompanies });
   }
 
   handleChange() {
-    console.log("handlechange");
     var search = document.getElementById("categorysearch").value.toLowerCase();
-    console.log("Search first letter");
-    console.log(search.charAt(0));
     if (search.charAt(0) == "") {
       return null;
     }
@@ -171,7 +164,6 @@ class CompareSearch extends React.Component {
   }
 
   mapCompanies = (companies) => {
-    console.log("mapcompanies");
     return companies.companies.map((company) => {
       return company.name;
     });
@@ -185,11 +177,9 @@ class CompareSearch extends React.Component {
             key={i}
             className={this.state.changehandled ? "rendercompanies" : null}
           >
-            <Link
+            <Link className = "companies_result"
               style={{
-                textDecoration: "none",
-                color: "#26385A",
-                fontWeight: "500",
+                fontWeight: "350",
                 fontSize: "18px",
               }}
               to={"/companies/" + company}

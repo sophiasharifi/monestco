@@ -338,7 +338,7 @@ const field = [
           {
             title:
               "Identifies and prevents forced labour violations",
-              popupText: "Suppliers are audited, grievance mechanisms are offered, and the supply chain is traced to identify potential violations. ",
+              popupText: "Suppliers are audited, grievance mechanisms are offered, and the supply chain is traced to identify potential violations.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             totalScore: 8,
@@ -384,7 +384,7 @@ const field = [
           {
             title:
               "Commits to fair compensation and higher wages",
-              popupText: "Living wage benchmarks are calculated, goals are set, and initiatives are taken to advocate for wage progression in the industry. ",
+              popupText: "Living wage benchmarks are calculated, goals are set, and initiatives are taken to advocate for wage progression in the industry.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             totalScore: 14,
@@ -479,7 +479,7 @@ const field = [
           {
             title:
               "Compensates and supports mistreated workers",
-            popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
+            popupText: "Effective remediation policies and processes are implemented to compensate mistreated workers if violations occur.",
             scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
             industrialStandard: [],
             totalScore: 6,
@@ -514,7 +514,7 @@ const field = [
     totalScore: 100,
     subfield: [
       {
-        mainNestedField: "Air Pollution (GHGs)",
+        mainNestedField: "Air Pollution",
         subNestedField: [
           {
             title: "Commits to reducing energy consumption",
@@ -938,7 +938,6 @@ const ScoreContainer = ({
     return () => window.removeEventListener("resize", updateSize);
   }, []);
   if (score >=0) {
-    // console.log(listBrandOne);
     if (score > industrialStandard[1]) {
       return (
         <div className={`compare-card-container ${!firstLayer && !secondLayer && "greensquare2"}`}>
@@ -1084,7 +1083,6 @@ const SubNestedField = ({item, tabView, mobileView, inputBrandOne, inputBrandTwo
         </span>
       </span>
       {item.scores.map((element, index) => {
-        console.log(index);
         if (mobileView && index < 2) {
           return (
             <ScoreContainer
@@ -1190,7 +1188,6 @@ const NestedField = ({ item, subIndexKey, inputBrandOne, inputBrandTwo, inputBra
       <div className={`animate-field ${show === subIndexKey ? "animate" : ""}`}>
         {show === subIndexKey &&
           item.subNestedField.map((item, index) => {
-            console.log(show);
             return <SubNestedField key={index} item={item} tabView={tabView} mobileView={mobileView} inputBrandOne={inputBrandOne} inputBrandTwo={inputBrandTwo} inputBrandThree={inputBrandThree}/>
           })}
       </div>
@@ -1201,8 +1198,6 @@ const NestedField = ({ item, subIndexKey, inputBrandOne, inputBrandTwo, inputBra
 const Subfield = ({indexKey, item, showSubField, setShowSubField, inputBrandOne, inputBrandTwo, inputBrandThree }) => {  
   const [mobileView, setMobileView] = useState(window.innerWidth < 600);
   const [show, setShow] = useState(null);
-  console.log("show");
-  console.log(show);
   
   useLayoutEffect(() => {
     function updateSize() {
@@ -1284,7 +1279,7 @@ const Subfield = ({indexKey, item, showSubField, setShowSubField, inputBrandOne,
   );
 };
 
-const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
+const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand}) => {
   const [companiesList, setCompaniesList] = useState([]);
   const [inputBrandOne, setInputBrandOne] = useState("");
   const [inputBrandTwo, setInputBrandTwo] = useState("");
@@ -1299,6 +1294,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
   const [fieldData, setFieldData] = useState(field);
   // const [state, setState] = useState([])
   const [showSubField, setShowSubField] = useState(null);
+  const [inputBrand, setInputBrand] = useState([false, false, false]);
 
   const handleAllChanges = (comp) => {
     return companiesList.filter(company => {
@@ -1327,2246 +1323,154 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
     setListBrandThree(true);
   };
 
-  const deleteField3 = () => {
-    setInputBrandThree("");
-    const field = [
-      {
-        mainField: "DIVERSITY & INCLUSION",
-        mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
-        subfield: [
-          {
-            mainNestedField: "Discrimination",
-            subNestedField: [
-              {
-                title: "Prohibits discrimination throughout the organization",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [40],
-                texts: [
-                  { text: "a11 stuff" },
-                  { text: "a11 stuff" },
-                  { text: "a11 stuff" },
-                ],
-              },
-              {
-                title: "Actively works to identify and respond to discrimination concerns ",
-                popupText: "Employee hotline channels are offered and actions are taken to address violations.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a12 stuff" },
-                  { text: "a12 stuff" },
-                  { text: "a12 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Gender Equality",
-            subNestedField: [
-              {
-                title:
-                  "Commits to increasing gender diversity throughout the organization",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a21 stuff" },
-                  { text: "a21 stuff" },
-                  { text: "a21 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Maintains strong female representation at all levels of leadership",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a22 stuff" },
-                  { text: "a22 stuff" },
-                  { text: "a22 stuff" },
-                ],
-              },
-              {
-                title: "Ensures employees are receiving equal pay for equal work",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a23 stuff" },
-                  { text: "a23 stuff" },
-                  { text: "a23 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Cultural Diversity",
-            subNestedField: [
-              {
-                title:
-                  "Commits to increasing gender diversity throughout the organization",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a31 stuff" },
-                  { text: "a31 stuff" },
-                  { text: "a31 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Maintains diverse ethnic representation at all levels of leadership",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a32 stuff" },
-                  { text: "a32 stuff" },
-                  { text: "a32 stuff" },
-                ],
-              },
-              {
-                title: "Actively supports BIPOC and underrepresented communities",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a33 stuff" },
-                  { text: "a33 stuff" },
-                  { text: "a33 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Inclusivity",
-            subNestedField: [
-              {
-                title:
-                  "Fosters an inclusive workplace culture for LGBTQ+ employees",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a41 stuff" },
-                  { text: "a41 stuff" },
-                  { text: "a41 stuff" },
-                ],
-              },
-              {
-                title: "Fosters an inclusive workplace culture for employees with disabilities",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a42 stuff" },
-                  { text: "a42 stuff" },
-                  { text: "a42 stuff" },
-                ],
-              },
-              {
-                title: "Promotes body positivity and messages of inclusivity to consumers",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a43 stuff" },
-                  { text: "a43 stuff" },
-                  { text: "a43 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-        ],
-      },
-      {
-        mainField: "WORKER EXPLOITATION",
-        mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
-        subfield: [
-          {
-            mainNestedField: "Child Labour",
-            subNestedField: [
-              {
-                title:
-                  "Prohibits the use of child labour throughout the value chain",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b11 stuff" },
-                  { text: "b11 stuff" },
-                  { text: "b11 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Actively works to identify and prevent child labour violations",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b12 stuff" },
-                  { text: "b12 stuff" },
-                  { text: "b12 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Enrolls child labour victims in educational programs after discovering violations",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b13 stuff" },
-                  { text: "b13 stuff" },
-                  { text: "b13 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Forced Labour",
-            subNestedField: [
-              {
-                title:
-                  "Prohibits the use of child labour throughout the value chain",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b21 stuff" },
-                  { text: "b21 stuff" },
-                  { text: "b21 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Actively works to identify and prevent forced labour violations",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b22 stuff" },
-                  { text: "b22 stuff" },
-                  { text: "b22 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Supports the recovery of forced labour victims after discovering violations",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b23 stuff" },
-                  { text: "b23 stuff" },
-                  { text: "b23 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Living Wage",
-            subNestedField: [
-              {
-                title: "Ensures all factory workers are paid a living wage",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b31 stuff" },
-                  { text: "b31 stuff" },
-                  { text: "b31 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Works to increase wages and advocate for fair compensation in the industry",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b32 stuff" },
-                  { text: "b32 stuff" },
-                  { text: "b32 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Ensures wages and benefits are being paid on time and in full",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b33 stuff" },
-                  { text: "b33 stuff" },
-                  { text: "b33 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Guarantees the right to freedom of association and collective bargaining",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b34 stuff" },
-                  { text: "b34 stuff" },
-                  { text: "b34 stuff" },
-                ],
-              },
-              // {
-              //   title:
-              //     "Advocates for wage progression and fair compensation in the industry",
-              //     popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-              //   scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-              //   industrialStandard: [],
-              //   texts: [
-              //     { text: "b35 stuff" },
-              //     { text: "b35 stuff" },
-              //     { text: "b35 stuff" },
-              //   ],
-              // },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Working Conditions",
-            subNestedField: [
-              {
-                title:
-                  "Actively works to improve factory health and safety conditions",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b41 stuff" },
-                  { text: "b41 stuff" },
-                  { text: "b41 stuff" },
-                ],
-              },
-              {
-                title: "Ensures workers are not forced to work excessive hours",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b42 stuff" },
-                  { text: "b42 stuff" },
-                  { text: "b42 stuff" },
-                ],
-              },
-              {
-                title: "Prohibits all forms of harassment or abuse towards workers",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b43 stuff" },
-                  { text: "b43 stuff" },
-                  { text: "b43 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Compensates mistreated workers after discovering violations ",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b44 stuff" },
-                  { text: "b44 stuff" },
-                  { text: "b44 stuff" },
-                ],
-              },
-              // {
-              //   title:
-              //     "Compensates mistreated workers after discovering violations",
-              //   scores: [{ score: "" }, { score: "" }, { score: "" }],
-              //   industrialStandard: "",
-              //   texts: [
-              //     { text: "b45 stuff" },
-              //     { text: "b45 stuff" },
-              //     { text: "b45 stuff" },
-              //   ],
-              // },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-        ],
-      },
-      {
-        mainField: "WASTE & POLLUTION",
-        mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
-        subfield: [
-          {
-            mainNestedField: "Air Pollution (GHGs)",
-            subNestedField: [
-              {
-                title: "Commits to using less energy throughout the value chain",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c11 stuff" },
-                  { text: "c11 stuff" },
-                  { text: "c11 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Commits to reducing greenhouse gas emissions throughout the value chain",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c12 stuff" },
-                  { text: "c12 stuff" },
-                  { text: "c12 stuff" },
-                ],
-              },
-              {
-                title: "Works towards reducing the operational carbon footprint",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c13 stuff" },
-                  { text: "c13 stuff" },
-                  { text: "c13 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Works with suppliers to reduce manufacturing carbon footprints",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c14 stuff" },
-                  { text: "c14 stuff" },
-                  { text: "c14 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Water Pollution & Wastes",
-            subNestedField: [
-              {
-                title: "Commits to using less water throughout the value chain",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c21 stuff" },
-                  { text: "c21 stuff" },
-                  { text: "c21 stuff" },
-                ],
-              },
-              {
-                title: "Works with suppliers to recycle water and reduce usage",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c22 stuff" },
-                  { text: "c22 stuff" },
-                  { text: "c22 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Eliminates use of toxic chemicals in the production of products",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c23 stuff" },
-                  { text: "c23 stuff" },
-                  { text: "c23 stuff" },
-                ],
-              },
-              {
-                title: "Filters wastewater to avoid contaminating fresh water",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c24 stuff" },
-                  { text: "c24 stuff" },
-                  { text: "c24 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Packaging Waste",
-            subNestedField: [
-              {
-                title: "Reduces use of plastic packaging and shopping bags",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c31 stuff" },
-                  { text: "c31 stuff" },
-                  { text: "c31 stuff" },
-                ],
-              },
-              {
-                title: "Uses recycled plastics and paper packaging materials",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c32 stuff" },
-                  { text: "c32 stuff" },
-                  { text: "c32 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Ensures all used packaging can be reused, recycled or composted",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c33 stuff" },
-                  { text: "c33 stuff" },
-                  { text: "c33 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Works with suppliers to reduce, reuse and recycle all packaging waste",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c34 stuff" },
-                  { text: "c34 stuff" },
-                  { text: "c34 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Material Waste",
-            subNestedField: [
-              {
-                title: "Uses recycled materials in the production of products",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c41 stuff" },
-                  { text: "c41 stuff" },
-                  { text: "c41 stuff" },
-                ],
-              },
-              {
-                title: "Repurposes or donates damaged and excess products",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c42 stuff" },
-                  { text: "c42 stuff" },
-                  { text: "c42 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Offers an effective take-back or repair program for customers",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c43 stuff" },
-                  { text: "c43 stuff" },
-                  { text: "c43 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Works with suppliers to reduce, reuse and recycle all material waste",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c44 stuff" },
-                  { text: "c44 stuff" },
-                  { text: "c44 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-        ],
-      },
-      {
-        mainField: "ETHICAL SOURCING",
-        mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
-        subfield: [
-          {
-            mainNestedField: "Cotton Farming",
-            subNestedField: [
-              {
-                title: "Sources sustainable cotton from certified farms",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d11 stuff"},
-                  {text: "d11"},
-                  {text: "d11"}
-                ]
-              },
-              {
-                title: "Actively works to prevent unethical cotton farming practices",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d12 stuff"},
-                  {text: "d12"},
-                  {text: "d12"}
-                ]
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Deforestation",
-            subNestedField: [
-              {
-                title: "Sources sustainable forest-based fabrics from certified suppliers",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d21 stuff"},
-                  {text: "d21"},
-                  {text: "d21"}
-                ]
-              },
-              {
-                title: "Uses paper packaging materials from sustainable sources",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d22 stuff"},
-                  {text: "d22"},
-                  {text: "d22"}
-                ]
-              },
-              {
-                title: "Actively works to protect forests and stop deforestation",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d23 stuff"},
-                  {text: "d23"},
-                  {text: "d23"}
-                ]
-              }
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Animal Welfare",
-            subNestedField: [
-              {
-                title: "Prohibits the inhumane treatment of animals throughout the value chain",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d31 stuff"},
-                  {text: "d31"},
-                  {text: "d31"}
-                ]
-              },
-              {
-                title: "Sources sustainable leather or prohibits use",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d32 stuff"},
-                  {text: "d32"},
-                  {text: "d32"}
-                ]
-              },
-              {
-                title: "Sources sustainable fur or prohibits use",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d33 stuff"},
-                  {text: "d33"},
-                  {text: "d33"}
-                ]
-              },
-              {
-                title: "Sources sustainable wool from non-mulesed sheep",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d34 stuff"},
-                  {text: "d34"},
-                  {text: "d34"}
-                ]
-              },
-              {
-                title: "Sources sustainable down from birds that were never force fed or live plucked",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d35 stuff"},
-                  {text: "d35"},
-                  {text: "d35"}
-                ]
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-        ],
-      },
-    ];
-    setFieldData(field);
-    setListBrandThree(false);
-  }
+  const deleteField = (inputIndex) => {
+    if (inputIndex == 0) {
+      setInputBrandOne("");
+    }
+    if (inputIndex == 1) setInputBrandTwo("");
+    if (inputIndex == 2) setInputBrandThree("");
 
-  const deleteField2 = () => {
-    setInputBrandTwo("");
-    const field = [
-      {
-        mainField: "DIVERSITY & INCLUSION",
-        mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
-        subfield: [
-          {
-            mainNestedField: "Discrimination",
-            subNestedField: [
-              {
-                title: "Prohibits discrimination throughout the organization",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [40],
-                texts: [
-                  { text: "a11 stuff" },
-                  { text: "a11 stuff" },
-                  { text: "a11 stuff" },
-                ],
-              },
-              {
-                title: "Actively works to identify and respond to discrimination concerns ",
-                popupText: "Employee hotline channels are offered and actions are taken to address violations.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a12 stuff" },
-                  { text: "a12 stuff" },
-                  { text: "a12 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Gender Equality",
-            subNestedField: [
-              {
-                title:
-                  "Commits to increasing gender diversity throughout the organization",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a21 stuff" },
-                  { text: "a21 stuff" },
-                  { text: "a21 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Maintains strong female representation at all levels of leadership",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a22 stuff" },
-                  { text: "a22 stuff" },
-                  { text: "a22 stuff" },
-                ],
-              },
-              {
-                title: "Ensures employees are receiving equal pay for equal work",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a23 stuff" },
-                  { text: "a23 stuff" },
-                  { text: "a23 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Cultural Diversity",
-            subNestedField: [
-              {
-                title:
-                  "Commits to increasing gender diversity throughout the organization",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a31 stuff" },
-                  { text: "a31 stuff" },
-                  { text: "a31 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Maintains diverse ethnic representation at all levels of leadership",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a32 stuff" },
-                  { text: "a32 stuff" },
-                  { text: "a32 stuff" },
-                ],
-              },
-              {
-                title: "Actively supports BIPOC and underrepresented communities",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a33 stuff" },
-                  { text: "a33 stuff" },
-                  { text: "a33 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Inclusivity",
-            subNestedField: [
-              {
-                title:
-                  "Fosters an inclusive workplace culture for LGBTQ+ employees",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a41 stuff" },
-                  { text: "a41 stuff" },
-                  { text: "a41 stuff" },
-                ],
-              },
-              {
-                title: "Fosters an inclusive workplace culture for employees with disabilities",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a42 stuff" },
-                  { text: "a42 stuff" },
-                  { text: "a42 stuff" },
-                ],
-              },
-              {
-                title: "Promotes body positivity and messages of inclusivity to consumers",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a43 stuff" },
-                  { text: "a43 stuff" },
-                  { text: "a43 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-        ],
-      },
-      {
-        mainField: "WORKER EXPLOITATION",
-        mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
-        subfield: [
-          {
-            mainNestedField: "Child Labour",
-            subNestedField: [
-              {
-                title:
-                  "Prohibits the use of child labour throughout the value chain",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b11 stuff" },
-                  { text: "b11 stuff" },
-                  { text: "b11 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Actively works to identify and prevent child labour violations",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b12 stuff" },
-                  { text: "b12 stuff" },
-                  { text: "b12 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Enrolls child labour victims in educational programs after discovering violations",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b13 stuff" },
-                  { text: "b13 stuff" },
-                  { text: "b13 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Forced Labour",
-            subNestedField: [
-              {
-                title:
-                  "Prohibits the use of child labour throughout the value chain",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b21 stuff" },
-                  { text: "b21 stuff" },
-                  { text: "b21 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Actively works to identify and prevent forced labour violations",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b22 stuff" },
-                  { text: "b22 stuff" },
-                  { text: "b22 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Supports the recovery of forced labour victims after discovering violations",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b23 stuff" },
-                  { text: "b23 stuff" },
-                  { text: "b23 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Living Wage",
-            subNestedField: [
-              {
-                title: "Ensures all factory workers are paid a living wage",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b31 stuff" },
-                  { text: "b31 stuff" },
-                  { text: "b31 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Works to increase wages and advocate for fair compensation in the industry",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b32 stuff" },
-                  { text: "b32 stuff" },
-                  { text: "b32 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Ensures wages and benefits are being paid on time and in full",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b33 stuff" },
-                  { text: "b33 stuff" },
-                  { text: "b33 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Guarantees the right to freedom of association and collective bargaining",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b34 stuff" },
-                  { text: "b34 stuff" },
-                  { text: "b34 stuff" },
-                ],
-              },
-              // {
-              //   title:
-              //     "Advocates for wage progression and fair compensation in the industry",
-              //     popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-              //   scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-              //   industrialStandard: [],
-              //   texts: [
-              //     { text: "b35 stuff" },
-              //     { text: "b35 stuff" },
-              //     { text: "b35 stuff" },
-              //   ],
-              // },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Working Conditions",
-            subNestedField: [
-              {
-                title:
-                  "Actively works to improve factory health and safety conditions",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b41 stuff" },
-                  { text: "b41 stuff" },
-                  { text: "b41 stuff" },
-                ],
-              },
-              {
-                title: "Ensures workers are not forced to work excessive hours",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b42 stuff" },
-                  { text: "b42 stuff" },
-                  { text: "b42 stuff" },
-                ],
-              },
-              {
-                title: "Prohibits all forms of harassment or abuse towards workers",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b43 stuff" },
-                  { text: "b43 stuff" },
-                  { text: "b43 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Compensates mistreated workers after discovering violations ",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b44 stuff" },
-                  { text: "b44 stuff" },
-                  { text: "b44 stuff" },
-                ],
-              },
-              // {
-              //   title:
-              //     "Compensates mistreated workers after discovering violations",
-              //   scores: [{ score: "" }, { score: "" }, { score: "" }],
-              //   industrialStandard: "",
-              //   texts: [
-              //     { text: "b45 stuff" },
-              //     { text: "b45 stuff" },
-              //     { text: "b45 stuff" },
-              //   ],
-              // },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-        ],
-      },
-      {
-        mainField: "WASTE & POLLUTION",
-        mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
-        subfield: [
-          {
-            mainNestedField: "Air Pollution (GHGs)",
-            subNestedField: [
-              {
-                title: "Commits to using less energy throughout the value chain",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c11 stuff" },
-                  { text: "c11 stuff" },
-                  { text: "c11 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Commits to reducing greenhouse gas emissions throughout the value chain",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c12 stuff" },
-                  { text: "c12 stuff" },
-                  { text: "c12 stuff" },
-                ],
-              },
-              {
-                title: "Works towards reducing the operational carbon footprint",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c13 stuff" },
-                  { text: "c13 stuff" },
-                  { text: "c13 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Works with suppliers to reduce manufacturing carbon footprints",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c14 stuff" },
-                  { text: "c14 stuff" },
-                  { text: "c14 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Water Pollution & Wastes",
-            subNestedField: [
-              {
-                title: "Commits to using less water throughout the value chain",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c21 stuff" },
-                  { text: "c21 stuff" },
-                  { text: "c21 stuff" },
-                ],
-              },
-              {
-                title: "Works with suppliers to recycle water and reduce usage",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c22 stuff" },
-                  { text: "c22 stuff" },
-                  { text: "c22 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Eliminates use of toxic chemicals in the production of products",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c23 stuff" },
-                  { text: "c23 stuff" },
-                  { text: "c23 stuff" },
-                ],
-              },
-              {
-                title: "Filters wastewater to avoid contaminating fresh water",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c24 stuff" },
-                  { text: "c24 stuff" },
-                  { text: "c24 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Packaging Waste",
-            subNestedField: [
-              {
-                title: "Reduces use of plastic packaging and shopping bags",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c31 stuff" },
-                  { text: "c31 stuff" },
-                  { text: "c31 stuff" },
-                ],
-              },
-              {
-                title: "Uses recycled plastics and paper packaging materials",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c32 stuff" },
-                  { text: "c32 stuff" },
-                  { text: "c32 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Ensures all used packaging can be reused, recycled or composted",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c33 stuff" },
-                  { text: "c33 stuff" },
-                  { text: "c33 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Works with suppliers to reduce, reuse and recycle all packaging waste",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c34 stuff" },
-                  { text: "c34 stuff" },
-                  { text: "c34 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Material Waste",
-            subNestedField: [
-              {
-                title: "Uses recycled materials in the production of products",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c41 stuff" },
-                  { text: "c41 stuff" },
-                  { text: "c41 stuff" },
-                ],
-              },
-              {
-                title: "Repurposes or donates damaged and excess products",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c42 stuff" },
-                  { text: "c42 stuff" },
-                  { text: "c42 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Offers an effective take-back or repair program for customers",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c43 stuff" },
-                  { text: "c43 stuff" },
-                  { text: "c43 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Works with suppliers to reduce, reuse and recycle all material waste",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c44 stuff" },
-                  { text: "c44 stuff" },
-                  { text: "c44 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-        ],
-      },
-      {
-        mainField: "ETHICAL SOURCING",
-        mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
-        subfield: [
-          {
-            mainNestedField: "Cotton Farming",
-            subNestedField: [
-              {
-                title: "Sources sustainable cotton from certified farms",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d11 stuff"},
-                  {text: "d11"},
-                  {text: "d11"}
-                ]
-              },
-              {
-                title: "Actively works to prevent unethical cotton farming practices",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d12 stuff"},
-                  {text: "d12"},
-                  {text: "d12"}
-                ]
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Deforestation",
-            subNestedField: [
-              {
-                title: "Sources sustainable forest-based fabrics from certified suppliers",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d21 stuff"},
-                  {text: "d21"},
-                  {text: "d21"}
-                ]
-              },
-              {
-                title: "Uses paper packaging materials from sustainable sources",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d22 stuff"},
-                  {text: "d22"},
-                  {text: "d22"}
-                ]
-              },
-              {
-                title: "Actively works to protect forests and stop deforestation",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d23 stuff"},
-                  {text: "d23"},
-                  {text: "d23"}
-                ]
-              }
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Animal Welfare",
-            subNestedField: [
-              {
-                title: "Prohibits the inhumane treatment of animals throughout the value chain",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d31 stuff"},
-                  {text: "d31"},
-                  {text: "d31"}
-                ]
-              },
-              {
-                title: "Sources sustainable leather or prohibits use",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d32 stuff"},
-                  {text: "d32"},
-                  {text: "d32"}
-                ]
-              },
-              {
-                title: "Sources sustainable fur or prohibits use",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d33 stuff"},
-                  {text: "d33"},
-                  {text: "d33"}
-                ]
-              },
-              {
-                title: "Sources sustainable wool from non-mulesed sheep",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d34 stuff"},
-                  {text: "d34"},
-                  {text: "d34"}
-                ]
-              },
-              {
-                title: "Sources sustainable down from birds that were never force fed or live plucked",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d35 stuff"},
-                  {text: "d35"},
-                  {text: "d35"}
-                ]
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-        ],
-      },
-    ];
-    setFieldData(field);
-  }
+    let data = fieldData;
+    data[0].mainScore[inputIndex].score = -1;
+    data[0].subfield[0].mainNestedScore[inputIndex].score = -1
+    data[0].subfield[0].subNestedField[0].texts[inputIndex].text = ""
+    data[0].subfield[0].subNestedField[0].scores[inputIndex].score = -1
+    data[0].subfield[0].subNestedField[1].texts[inputIndex].text = ""
+    data[0].subfield[0].subNestedField[1].scores[inputIndex].score = -1
 
-  const deleteField1 = () => {
-    setInputBrandOne("");
-    const field = [
-      {
-        mainField: "DIVERSITY & INCLUSION",
-        mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
-        subfield: [
-          {
-            mainNestedField: "Discrimination",
-            subNestedField: [
-              {
-                title: "Prohibits discrimination throughout the organization",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [40],
-                texts: [
-                  { text: "a11 stuff" },
-                  { text: "a11 stuff" },
-                  { text: "a11 stuff" },
-                ],
-              },
-              {
-                title: "Actively works to identify and respond to discrimination concerns ",
-                popupText: "Employee hotline channels are offered and actions are taken to address violations.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a12 stuff" },
-                  { text: "a12 stuff" },
-                  { text: "a12 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Gender Equality",
-            subNestedField: [
-              {
-                title:
-                  "Commits to increasing gender diversity throughout the organization",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a21 stuff" },
-                  { text: "a21 stuff" },
-                  { text: "a21 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Maintains strong female representation at all levels of leadership",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a22 stuff" },
-                  { text: "a22 stuff" },
-                  { text: "a22 stuff" },
-                ],
-              },
-              {
-                title: "Ensures employees are receiving equal pay for equal work",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a23 stuff" },
-                  { text: "a23 stuff" },
-                  { text: "a23 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Cultural Diversity",
-            subNestedField: [
-              {
-                title:
-                  "Commits to increasing gender diversity throughout the organization",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a31 stuff" },
-                  { text: "a31 stuff" },
-                  { text: "a31 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Maintains diverse ethnic representation at all levels of leadership",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a32 stuff" },
-                  { text: "a32 stuff" },
-                  { text: "a32 stuff" },
-                ],
-              },
-              {
-                title: "Actively supports BIPOC and underrepresented communities",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a33 stuff" },
-                  { text: "a33 stuff" },
-                  { text: "a33 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Inclusivity",
-            subNestedField: [
-              {
-                title:
-                  "Fosters an inclusive workplace culture for LGBTQ+ employees",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a41 stuff" },
-                  { text: "a41 stuff" },
-                  { text: "a41 stuff" },
-                ],
-              },
-              {
-                title: "Fosters an inclusive workplace culture for employees with disabilities",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a42 stuff" },
-                  { text: "a42 stuff" },
-                  { text: "a42 stuff" },
-                ],
-              },
-              {
-                title: "Promotes body positivity and messages of inclusivity to consumers",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "a43 stuff" },
-                  { text: "a43 stuff" },
-                  { text: "a43 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-        ],
-      },
-      {
-        mainField: "WORKER EXPLOITATION",
-        mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
-        subfield: [
-          {
-            mainNestedField: "Child Labour",
-            subNestedField: [
-              {
-                title:
-                  "Prohibits the use of child labour throughout the value chain",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b11 stuff" },
-                  { text: "b11 stuff" },
-                  { text: "b11 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Actively works to identify and prevent child labour violations",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b12 stuff" },
-                  { text: "b12 stuff" },
-                  { text: "b12 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Enrolls child labour victims in educational programs after discovering violations",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b13 stuff" },
-                  { text: "b13 stuff" },
-                  { text: "b13 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Forced Labour",
-            subNestedField: [
-              {
-                title:
-                  "Prohibits the use of child labour throughout the value chain",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b21 stuff" },
-                  { text: "b21 stuff" },
-                  { text: "b21 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Actively works to identify and prevent forced labour violations",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b22 stuff" },
-                  { text: "b22 stuff" },
-                  { text: "b22 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Supports the recovery of forced labour victims after discovering violations",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b23 stuff" },
-                  { text: "b23 stuff" },
-                  { text: "b23 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Living Wage",
-            subNestedField: [
-              {
-                title: "Ensures all factory workers are paid a living wage",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b31 stuff" },
-                  { text: "b31 stuff" },
-                  { text: "b31 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Works to increase wages and advocate for fair compensation in the industry",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b32 stuff" },
-                  { text: "b32 stuff" },
-                  { text: "b32 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Ensures wages and benefits are being paid on time and in full",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b33 stuff" },
-                  { text: "b33 stuff" },
-                  { text: "b33 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Guarantees the right to freedom of association and collective bargaining",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b34 stuff" },
-                  { text: "b34 stuff" },
-                  { text: "b34 stuff" },
-                ],
-              },
-              // {
-              //   title:
-              //     "Advocates for wage progression and fair compensation in the industry",
-              //     popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-              //   scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-              //   industrialStandard: [],
-              //   texts: [
-              //     { text: "b35 stuff" },
-              //     { text: "b35 stuff" },
-              //     { text: "b35 stuff" },
-              //   ],
-              // },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Working Conditions",
-            subNestedField: [
-              {
-                title:
-                  "Actively works to improve factory health and safety conditions",
-                  popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b41 stuff" },
-                  { text: "b41 stuff" },
-                  { text: "b41 stuff" },
-                ],
-              },
-              {
-                title: "Ensures workers are not forced to work excessive hours",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b42 stuff" },
-                  { text: "b42 stuff" },
-                  { text: "b42 stuff" },
-                ],
-              },
-              {
-                title: "Prohibits all forms of harassment or abuse towards workers",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b43 stuff" },
-                  { text: "b43 stuff" },
-                  { text: "b43 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Compensates mistreated workers after discovering violations ",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "b44 stuff" },
-                  { text: "b44 stuff" },
-                  { text: "b44 stuff" },
-                ],
-              },
-              // {
-              //   title:
-              //     "Compensates mistreated workers after discovering violations",
-              //   scores: [{ score: "" }, { score: "" }, { score: "" }],
-              //   industrialStandard: "",
-              //   texts: [
-              //     { text: "b45 stuff" },
-              //     { text: "b45 stuff" },
-              //     { text: "b45 stuff" },
-              //   ],
-              // },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-        ],
-      },
-      {
-        mainField: "WASTE & POLLUTION",
-        mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
-        subfield: [
-          {
-            mainNestedField: "Air Pollution (GHGs)",
-            subNestedField: [
-              {
-                title: "Commits to using less energy throughout the value chain",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c11 stuff" },
-                  { text: "c11 stuff" },
-                  { text: "c11 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Commits to reducing greenhouse gas emissions throughout the value chain",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c12 stuff" },
-                  { text: "c12 stuff" },
-                  { text: "c12 stuff" },
-                ],
-              },
-              {
-                title: "Works towards reducing the operational carbon footprint",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c13 stuff" },
-                  { text: "c13 stuff" },
-                  { text: "c13 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Works with suppliers to reduce manufacturing carbon footprints",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c14 stuff" },
-                  { text: "c14 stuff" },
-                  { text: "c14 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Water Pollution & Wastes",
-            subNestedField: [
-              {
-                title: "Commits to using less water throughout the value chain",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c21 stuff" },
-                  { text: "c21 stuff" },
-                  { text: "c21 stuff" },
-                ],
-              },
-              {
-                title: "Works with suppliers to recycle water and reduce usage",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c22 stuff" },
-                  { text: "c22 stuff" },
-                  { text: "c22 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Eliminates use of toxic chemicals in the production of products",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c23 stuff" },
-                  { text: "c23 stuff" },
-                  { text: "c23 stuff" },
-                ],
-              },
-              {
-                title: "Filters wastewater to avoid contaminating fresh water",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c24 stuff" },
-                  { text: "c24 stuff" },
-                  { text: "c24 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Packaging Waste",
-            subNestedField: [
-              {
-                title: "Reduces use of plastic packaging and shopping bags",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c31 stuff" },
-                  { text: "c31 stuff" },
-                  { text: "c31 stuff" },
-                ],
-              },
-              {
-                title: "Uses recycled plastics and paper packaging materials",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c32 stuff" },
-                  { text: "c32 stuff" },
-                  { text: "c32 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Ensures all used packaging can be reused, recycled or composted",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c33 stuff" },
-                  { text: "c33 stuff" },
-                  { text: "c33 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Works with suppliers to reduce, reuse and recycle all packaging waste",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c34 stuff" },
-                  { text: "c34 stuff" },
-                  { text: "c34 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Material Waste",
-            subNestedField: [
-              {
-                title: "Uses recycled materials in the production of products",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c41 stuff" },
-                  { text: "c41 stuff" },
-                  { text: "c41 stuff" },
-                ],
-              },
-              {
-                title: "Repurposes or donates damaged and excess products",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c42 stuff" },
-                  { text: "c42 stuff" },
-                  { text: "c42 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Offers an effective take-back or repair program for customers",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c43 stuff" },
-                  { text: "c43 stuff" },
-                  { text: "c43 stuff" },
-                ],
-              },
-              {
-                title:
-                  "Works with suppliers to reduce, reuse and recycle all material waste",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  { text: "c44 stuff" },
-                  { text: "c44 stuff" },
-                  { text: "c44 stuff" },
-                ],
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-        ],
-      },
-      {
-        mainField: "ETHICAL SOURCING",
-        mainScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-        industrialStandard: [],
-        subfield: [
-          {
-            mainNestedField: "Cotton Farming",
-            subNestedField: [
-              {
-                title: "Sources sustainable cotton from certified farms",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d11 stuff"},
-                  {text: "d11"},
-                  {text: "d11"}
-                ]
-              },
-              {
-                title: "Actively works to prevent unethical cotton farming practices",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d12 stuff"},
-                  {text: "d12"},
-                  {text: "d12"}
-                ]
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Deforestation",
-            subNestedField: [
-              {
-                title: "Sources sustainable forest-based fabrics from certified suppliers",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d21 stuff"},
-                  {text: "d21"},
-                  {text: "d21"}
-                ]
-              },
-              {
-                title: "Uses paper packaging materials from sustainable sources",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d22 stuff"},
-                  {text: "d22"},
-                  {text: "d22"}
-                ]
-              },
-              {
-                title: "Actively works to protect forests and stop deforestation",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d23 stuff"},
-                  {text: "d23"},
-                  {text: "d23"}
-                ]
-              }
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-          {
-            mainNestedField: "Animal Welfare",
-            subNestedField: [
-              {
-                title: "Prohibits the inhumane treatment of animals throughout the value chain",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d31 stuff"},
-                  {text: "d31"},
-                  {text: "d31"}
-                ]
-              },
-              {
-                title: "Sources sustainable leather or prohibits use",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d32 stuff"},
-                  {text: "d32"},
-                  {text: "d32"}
-                ]
-              },
-              {
-                title: "Sources sustainable fur or prohibits use",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d33 stuff"},
-                  {text: "d33"},
-                  {text: "d33"}
-                ]
-              },
-              {
-                title: "Sources sustainable wool from non-mulesed sheep",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d34 stuff"},
-                  {text: "d34"},
-                  {text: "d34"}
-                ]
-              },
-              {
-                title: "Sources sustainable down from birds that were never force fed or live plucked",
-                popupText: "Non-discriminatory policies are set and measures are taken to prevent bias in hiring and promotions.",
-                scores: [{ score: -1 }, { score: -1 }, { score: -1 }],
-                industrialStandard: [],
-                texts: [
-                  {text: "d35 stuff"},
-                  {text: "d35"},
-                  {text: "d35"}
-                ]
-              },
-            ],
-            mainNestedScore: [{ score: -1 }, { score: -1 }, { score: -1 }],
-            industrialStandard: [],
-          },
-        ],
-      },
-    ];
-    setFieldData(field);
+    data[0].subfield[1].mainNestedScore[inputIndex].score = -1
+    data[0].subfield[1].subNestedField[0].texts[inputIndex].text = ""
+    data[0].subfield[1].subNestedField[0].scores[inputIndex].score = -1
+    data[0].subfield[1].subNestedField[1].texts[inputIndex].text = ""
+    data[0].subfield[1].subNestedField[1].scores[inputIndex].score = -1
+    data[0].subfield[1].subNestedField[2].texts[inputIndex].text = ""
+    data[0].subfield[1].subNestedField[2].scores[inputIndex].score = -1
+
+    data[0].subfield[2].mainNestedScore[inputIndex].score = -1
+    data[0].subfield[2].subNestedField[0].texts[inputIndex].text = ""
+    data[0].subfield[2].subNestedField[0].scores[inputIndex].score = -1
+    data[0].subfield[2].subNestedField[1].texts[inputIndex].text = ""
+    data[0].subfield[2].subNestedField[1].scores[inputIndex].score = -1
+    data[0].subfield[2].subNestedField[2].texts[inputIndex].text = ""
+    data[0].subfield[2].subNestedField[2].scores[inputIndex].score = -1
+
+    data[0].subfield[3].mainNestedScore[inputIndex].score = -1
+    data[0].subfield[3].subNestedField[0].texts[inputIndex].text = ""
+    data[0].subfield[3].subNestedField[0].scores[inputIndex].score = -1
+    data[0].subfield[3].subNestedField[1].texts[inputIndex].text = ""
+    data[0].subfield[3].subNestedField[1].scores[inputIndex].score = -1
+    data[0].subfield[3].subNestedField[2].texts[inputIndex].text = ""
+    data[0].subfield[3].subNestedField[2].scores[inputIndex].score = -1
+
+    data[1].mainScore[inputIndex].score = -1
+
+    data[1].subfield[0].mainNestedScore[inputIndex].score = -1
+    data[1].subfield[0].subNestedField[0].texts[inputIndex].text = ""
+    data[1].subfield[0].subNestedField[0].scores[inputIndex].score = -1
+    data[1].subfield[0].subNestedField[1].texts[inputIndex].text = ""
+    data[1].subfield[0].subNestedField[1].scores[inputIndex].score = -1
+    data[1].subfield[0].subNestedField[2].texts[inputIndex].text = ""
+    data[1].subfield[0].subNestedField[2].scores[inputIndex].score = -1
+
+    data[1].subfield[1].mainNestedScore[inputIndex].score = -1
+    data[1].subfield[1].subNestedField[0].texts[inputIndex].text = ""
+    data[1].subfield[1].subNestedField[0].scores[inputIndex].score = -1
+    data[1].subfield[1].subNestedField[1].texts[inputIndex].text = ""
+    data[1].subfield[1].subNestedField[1].scores[inputIndex].score = -1
+    data[1].subfield[1].subNestedField[2].texts[inputIndex].text = ""
+    data[1].subfield[1].subNestedField[2].scores[inputIndex].score = -1
+
+    data[1].subfield[2].mainNestedScore[inputIndex].score = -1
+    data[1].subfield[2].subNestedField[0].texts[inputIndex].text = ""
+    data[1].subfield[2].subNestedField[0].scores[inputIndex].score = -1
+    data[1].subfield[2].subNestedField[1].texts[inputIndex].text = ""
+    data[1].subfield[2].subNestedField[1].scores[inputIndex].score = -1
+    data[1].subfield[2].subNestedField[2].texts[inputIndex].text = ""
+    data[1].subfield[2].subNestedField[2].scores[inputIndex].score = -1
+    data[1].subfield[2].subNestedField[3].texts[inputIndex].text = ""
+    data[1].subfield[2].subNestedField[3].scores[inputIndex].score = -1
+
+    data[1].subfield[3].mainNestedScore[inputIndex].score = -1
+    data[1].subfield[3].subNestedField[0].texts[inputIndex].text = ""
+    data[1].subfield[3].subNestedField[0].scores[inputIndex].score = -1
+    data[1].subfield[3].subNestedField[1].texts[inputIndex].text = ""
+    data[1].subfield[3].subNestedField[1].scores[inputIndex].score = -1
+    data[1].subfield[3].subNestedField[2].texts[inputIndex].text = ""
+    data[1].subfield[3].subNestedField[2].scores[inputIndex].score = -1
+    data[1].subfield[3].subNestedField[3].texts[inputIndex].text = ""
+    data[1].subfield[3].subNestedField[3].scores[inputIndex].score = -1
+
+    data[2].mainScore[inputIndex].score = -1
+
+    data[2].subfield[0].mainNestedScore[inputIndex].score = -1
+    data[2].subfield[0].subNestedField[0].texts[inputIndex].text = ""
+    data[2].subfield[0].subNestedField[0].scores[inputIndex].score = -1
+    data[2].subfield[0].subNestedField[1].texts[inputIndex].text = ""
+    data[2].subfield[0].subNestedField[1].scores[inputIndex].score = -1
+    data[2].subfield[0].subNestedField[2].texts[inputIndex].text = ""
+    data[2].subfield[0].subNestedField[2].scores[inputIndex].score = -1
+    data[2].subfield[0].subNestedField[3].texts[inputIndex].text = "" 
+    data[2].subfield[0].subNestedField[3].scores[inputIndex].score = -1
+
+    data[2].subfield[1].mainNestedScore[inputIndex].score = -1
+    data[2].subfield[1].subNestedField[0].texts[inputIndex].text = ""
+    data[2].subfield[1].subNestedField[0].scores[inputIndex].score = -1
+    data[2].subfield[1].subNestedField[1].texts[inputIndex].text = ""
+    data[2].subfield[1].subNestedField[1].scores[inputIndex].score = -1
+    data[2].subfield[1].subNestedField[2].texts[inputIndex].text = ""
+    data[2].subfield[1].subNestedField[2].scores[inputIndex].score = -1
+    data[2].subfield[1].subNestedField[3].texts[inputIndex].text = ""
+    data[2].subfield[1].subNestedField[3].scores[inputIndex].score = -1
+
+    data[2].subfield[2].mainNestedScore[inputIndex].score = -1
+    data[2].subfield[2].subNestedField[0].texts[inputIndex].text = ""
+    data[2].subfield[2].subNestedField[0].scores[inputIndex].score = -1
+    data[2].subfield[2].subNestedField[1].texts[inputIndex].text = ""
+    data[2].subfield[2].subNestedField[1].scores[inputIndex].score =  -1
+    data[2].subfield[2].subNestedField[2].texts[inputIndex].text = ""
+    data[2].subfield[2].subNestedField[2].scores[inputIndex].score = -1
+    data[2].subfield[2].subNestedField[3].texts[inputIndex].text = ""
+    data[2].subfield[2].subNestedField[3].scores[inputIndex].score = -1
+
+    data[2].subfield[3].mainNestedScore[inputIndex].score = -1
+    data[2].subfield[3].subNestedField[0].texts[inputIndex].text = ""
+    data[2].subfield[3].subNestedField[0].scores[inputIndex].score = -1
+    data[2].subfield[3].subNestedField[1].texts[inputIndex].text = ""
+    data[2].subfield[3].subNestedField[1].scores[inputIndex].score = -1
+    data[2].subfield[3].subNestedField[2].texts[inputIndex].text = ""
+    data[2].subfield[3].subNestedField[2].scores[inputIndex].score = -1
+    data[2].subfield[3].subNestedField[3].texts[inputIndex].text = ""
+    data[2].subfield[3].subNestedField[3].scores[inputIndex].score = -1
+
+    data[3].mainScore[inputIndex].score = -1;
+
+    data[3].subfield[0].mainNestedScore[inputIndex].score = -1
+    data[3].subfield[0].subNestedField[0].texts[inputIndex].text = ""
+    data[3].subfield[0].subNestedField[0].scores[inputIndex].score = -1
+    data[3].subfield[0].subNestedField[1].texts[inputIndex].text = ""
+    data[3].subfield[0].subNestedField[1].scores[inputIndex].score = -1
+
+    data[3].subfield[1].mainNestedScore[inputIndex].score = -1
+    data[3].subfield[1].subNestedField[0].texts[inputIndex].text = ""
+    data[3].subfield[1].subNestedField[0].scores[inputIndex].score = -1
+    data[3].subfield[1].subNestedField[1].texts[inputIndex].text = ""
+    data[3].subfield[1].subNestedField[1].scores[inputIndex].score = -1
+    data[3].subfield[1].subNestedField[2].texts[inputIndex].text = ""
+    data[3].subfield[1].subNestedField[2].scores[inputIndex].score = -1
+
+    data[3].subfield[2].mainNestedScore[inputIndex].score = -1
+    data[3].subfield[2].subNestedField[0].texts[inputIndex].text = ""
+    data[3].subfield[2].subNestedField[0].scores[inputIndex].score = -1
+    data[3].subfield[2].subNestedField[1].texts[inputIndex].text = ""
+    data[3].subfield[2].subNestedField[1].scores[inputIndex].score = -1
+    data[3].subfield[2].subNestedField[2].texts[inputIndex].text = ""
+    data[3].subfield[2].subNestedField[2].scores[inputIndex].score = -1
+    data[3].subfield[2].subNestedField[3].texts[inputIndex].text = ""
+    data[3].subfield[2].subNestedField[3].scores[inputIndex].score = -1
+    data[3].subfield[2].subNestedField[4].texts[inputIndex].text = ""
+    data[3].subfield[2].subNestedField[4].scores[inputIndex].score = -1
+
+    setFieldData(data);
   }
 
   async function renderData(company, inputIndex) {
@@ -3874,7 +1778,6 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
       });
 
     setFieldData(data);
-    console.log(fieldData);
     if (inputIndex === 0) {
       setInputBrandOne(company);
       setListBrandOne(false);
@@ -3971,6 +1874,8 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
     // })
 
     axios.get("/industry").then((resp) => {
+      console.log("respat");
+      console.log(resp.data);
       let data = fieldData;
 
       data[0].industrialStandard.push(resp.data.rows[0]["Alow"]);
@@ -4275,16 +2180,17 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
       data[3].subfield[2].subNestedField[4].industrialStandard.push(
         resp.data.rows[0]["D3.5high"]
       );
+      console.log("data");
+      console.log(data);
     });
   }, []);
 
   useEffect(() => {
-    // console.log(selectedCompaniesList);
     selectedCompaniesList.forEach((item, index) => {
       item && renderData(item, index + 1);
     });
   }, [selectedCompaniesList]);
-  console.log(selectedCompaniesList);
+
   return (
     <div className="compare__tool-container">
       <div className="compare-input-container">
@@ -4295,7 +2201,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
           onBlur={() => setTimeout(() => setListBrandOne(false), 200)}
           onFocus={handleChangeOne}
         />
-        <AiOutlineClose onClick = {deleteField1} />
+        <AiOutlineClose className="desktop-only" onClick = {() => deleteField(0)} />
         <input
           style={{marginLeft: '4%'}}
           placeholder="Type the brand"
@@ -4304,7 +2210,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
           onBlur={() => setTimeout(() => setListBrandTwo(false), 200)}
           onFocus={handleChangeTwo}
         />
-        <AiOutlineClose onClick = {deleteField2} />
+        <AiOutlineClose className="desktop-only" onClick = {() => deleteField(1)} />
         <input
           style={{marginLeft: '4%'}}
           placeholder="Type the brand"
@@ -4313,7 +2219,7 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
           onBlur={() => setTimeout(() => setListBrandThree(false), 200)}
           onFocus={handleChangeThree}
         />
-        <AiOutlineClose onClick = {deleteField3} />
+        <AiOutlineClose className="desktop-only" onClick = {() => deleteField(2)} />
         <div className="compare-companyList-container">
           {listBrandOne && (
             <div className="compare-companyList list-1">
@@ -4354,13 +2260,17 @@ const CompareTool = ({ selectedCompaniesList, removeBrand, fetchBrand }) => {
             <div key={index} className="brand-button-container">
               <span
                 className={item ? "brand-button-close" : "diplay-none"}
-                onClick={() => removeBrand(index)}
+                onClick={() => {
+                  deleteField(index);
+                  var spec_idx = inputBrand;
+                  spec_idx[index] = true;
+                  setInputBrand(spec_idx);
+                }}
               >
                 &#10006;
               </span>
-              {/* this needs to be fixed jrngjserni */}
-              <span className={item ? "brand-name" : "brand-name-placeholder"}>
-                {item ? item : "Select the brand"}
+              <span className={!inputBrand[index] && item ? "brand-name" : "brand-name-placeholder"}>
+                {!inputBrand[index] && item ? item : "Select the brand"}
               </span>
             </div>
           );

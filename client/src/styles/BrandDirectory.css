@@ -8,10 +8,20 @@
 
 .greyed_color {
     color: #9A9B9C !important;
+    pointer-events: none;
+}
+
+.greyed_color:hover {
+    text-decoration: none;
+    cursor: default;
 }
 
 .black_color {
     color: #26385A !important;
+}
+
+.black_color {
+    
 }
 
 .brand_directory_title p {

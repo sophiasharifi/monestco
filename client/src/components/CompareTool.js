@@ -201,11 +201,9 @@ class CompareTool extends React.Component {
     }
 
     async returnIndustryStandards(company, condition) {
-        console.log(condition);
         await axios.post('/companydetailsA', {}, {
                params: company
             }).then(resp => {
-                console.log("A");
 
                 var A1 = {};
                 A1['A1'] = resp.data.rows[0]['A1'];
@@ -239,7 +237,6 @@ class CompareTool extends React.Component {
                 A4['A42_score'] = resp.data.rows[0]['A42_score'];
                 A4['A42_text'] = resp.data.rows[0]['A42_text'];
 
-                console.log(this.state.firstA4);
 
                 if (condition == 1) this.setState({
                     firstA: resp.data.rows[0]['A'],
@@ -270,7 +267,6 @@ class CompareTool extends React.Component {
         await axios.post('/companydetailsB', {}, {
                params: company
             }).then(resp => {
-                console.log("B");
                 
                 var B1 = {};
                 B1['B1'] = resp.data.rows[0]['B1'];
@@ -345,7 +341,6 @@ class CompareTool extends React.Component {
         await axios.post('/companydetailsC', {}, {
                params: company
             }).then(resp => {
-                console.log("C");
 
                 var C1 = {};
                 C1['C1'] = resp.data.rows[0]['C1'];
@@ -423,7 +418,6 @@ class CompareTool extends React.Component {
         await axios.post('/companydetailsD', {}, {
                params: company
             }).then(resp => {
-                console.log(resp.data.rows[0]);
 
                 var D1 = {};
                 D1['D1'] = resp.data.rows[0]['D1'];
@@ -488,7 +482,6 @@ class CompareTool extends React.Component {
         this.setState({firstcomp: event.target.value});
         const returnedCompanies = this.enterCompanies(this.state.firstcomp);
         await this.setState({returnedCompanies1: returnedCompanies});
-        console.log(this.state.returnedCompanies1);
     }
 
     async enterSecond(event) {
@@ -635,7 +628,6 @@ class CompareTool extends React.Component {
     }
 
     renderNestedGrid = (letter, field) => {
-        console.log(letter[field]);
         return <div className={'square1 ' + this.compareNestedStandards(this.state.industrystandards[field], letter[field])}>
             {letter[field] != undefined && <div style={{marginTop: '8%', fontWeight: 500}}>{letter[field]} / 100</div> }
         </div>
@@ -936,7 +928,6 @@ class CompareTool extends React.Component {
     }
 
     renderNestedTwoGrid = (letter, fieldscore, fieldtext, flipstate, flipfunc) => {
-        console.log(flipstate);
         return <div onClick={flipfunc} className={'square2 ' + this.compareNestedTwoStandards(this.state.industrystandards[fieldscore], letter[fieldscore])}>
             {flipstate == false && letter[fieldscore] != undefined && <div style={{marginTop: '30%', fontWeight: 500}}>{letter[fieldscore]} / 100</div> }
             {flipstate == true && letter[fieldscore] != undefined && <div style={{marginTop: '30%', fontWeight: 500}}>{letter[fieldtext]}</div> }
